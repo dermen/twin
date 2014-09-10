@@ -90,45 +90,48 @@ Correlated x-ray scattering (CXS) is an emerging technique that aims to extract 
 \cos ( \psi) = \frac{\bm q_1 \cdot \bm q_2}{|\bm q_1| |\bm q_2| } 
 \ee
 
-is constrained by that particle's internal structure. Successful extraction of these structural constraints can enhance the problem of model refinement and prediction using solution measurements [refs]. From many snapshot exposures of solutions, it was theorized that one could extract a correlation function
+is constrained by that particle's internal structure. Successful extraction of these structural constraints can enhance the problem of model refinement and prediction using solution measurements [refs]. From many snapshot exposures of solutions, it was theorized [refs] that one could extract a correlation function
 
 \be \label{corr}
 C(\bm q_1, \bm q_2) \equiv C(|\bm q_1|,| \bm q_2|,\cos (\psi) ) 
 \ee
 
-dependent only on the average internal structure of the particles in solution [refs]. The overall shape of (\ref{corr}) depends on the angular constraints aforementioned: its magnitude will rise and fall depending on the local electronic density of the scatterers.
+dependent only on the average internal structure of the particles in solution [refs]. The overall shape of (\ref{corr}) depends on the angular constraints aforementioned: the magnitude of (\ref{corr}) will rise and fall depending on the local electronic density of the scatterers. The establishment of protocols for successfully measuring and extracting CXS signal from solution measurements has potential to revolutionize atomic imaging disciplines. It has been shown that super-resolution can be achieved using iterative algorithms which refine low-resolution models using detailed x-ray data [refs] and CXS data are extremely detailed owing to the three-dimensional parameter space. 
 
-The establishment of protocols for successfully measuring and extracting CXS signal from solution measurements has potential to revolutionize atomic imaging disciplines. It has been shown that super-resolution can be achieved using iterative algorithms which refine low-resolution models against detailed x-ray data [refs] and CXS data are extremely detailed owing to the three-dimensional parameter space. The signal-to-noise ratio for (\ref{corr}) increases with each additional recorded exposure, and was proven to be independent of the number of particles in the exposed sample volume [refs]. If one can accurately separate CXS from artificial correlations in the experiment, then in principle measuring CXS of weak scatterers such as proteins in solution should be possible; one need only record enough exposures. With state-of-the-art x-ray free electron laser (xFEL) facilities one can achieve enough photons per protein in order to make such an experiment feasible.
+The signal-to-noise ratio for (\ref{corr}) increases with each additional recorded exposure, and was proven to be independent of the number of particles in the exposed sample volume [refs]. If one can accurately separate CXS from artificial correlations in the experiment, then in principle measuring CXS of weak scatterers such as proteins in solution should be possible; one need only record enough exposures. With state-of-the-art x-ray free electron laser (xFEL) facilities one can scatter enough photons per protein in order to make such an experiment feasible [refs]. \emph{(include numbers here on protein scattering cross sections and xFEL focus/flux, showing that one can achieve, say 2+ photons per protein per exposure on average. Perhaps we can use our LCLS data to show this?)}
 
-Currently, the main inhibitions to accurate CXS measurement are fluctuations in the measured intensity not due to the particles under investigation. These arise as artifacts associated with the experiment, including non-uniform pixel response, non-uniform particle distribution in the solution, and background (solvent) scattering [refs]. All of these can lead to artificial intensity correlations. In order to build a foundation for doing CXS on solutions, and to establish methods for overcoming the challenges  associated with CXS, we have been conducting CXS experiments involving nanoparticles (NPs) in solution. NPs generally have high scattering cross section, making them an easy test candidate. 
+Currently, the main inhibitions to accurate CXS measurement are fluctuations in the measured intensity not due to the particles under investigation. These arise as artifacts associated with the experiment, including non-uniform pixel response, non-uniform particle distribution in the solution, and background (solvent) scattering [refs]. All of these can lead to artificial intensity correlations. In order to build a foundation for doing CXS on solutions, and to establish methods for overcoming the associated challenges, we have been conducting CXS experiments involving nanoparticles (NPs) in solution. NPs generally have high scattering cross section, making them an good test candidate.
 
-Previously, we reported on extracting CXS from silver NPs in solution at the Stanford Synchrotron Radiation Lightsource (SSRL). There we made use of a non-linear binary filter and were able to accurately measure the CXS. Here we report on recent advances in our analysis framework, which have allowed us to resolve additional correlations than those expected from bulk crystalline silver NPs without the use of a binary filter. A second experiment involving gold NPs at the xFEL in Japan confirmed these results, and we have determined that the additional correlations arise due to a very simple NP twinning model. As CXS from solutions reveals information on the average particle in solution, this implies that the twinning model is common to most of the particles. By analyzing the magnitude of (\ref{corr}) we can estimate the percentage of each NP that is twinned. 
+Previously, we reported on extracting CXS from silver NP solution at the Stanford Synchrotron Radiation Lightsource (SSRL). There we made use of a non-linear binary filter and were able to accurately extract CXS from the data which was plagued with artificial correlations. Here we report on substantial advances in our analysis framework, which have allowed us to circumvent the binary filtering step and further resolve additional correlations than those expected from elementary bulk face-centered-cubic (FCC) models of silver NPs. A second experiment involving gold NPs at the xFEL in Japan  confirmed these results, and we have determined that the additional correlations arise due to a very simple NP twinning model [refs]. As CXS from solutions reveals information on the average particle in solution, this implies that the twinning model is common to most FCC NPs in our experiments. By analyzing the magnitude of (\ref{corr}) we estimate the percentage of each individual in the twins.
 
 With these results we demonstrate how CXS can extract additional structural motifs not readily apparent with conventional solution scattering methods.
  
 \section{CXS of nanoparticles in solution}
 
-An obvious precursor to the study of biomolecule CXS is that of nanoparticles (NPs). Indeed our first successful measurement of CXS was done on colloidal suspensions of silver NPs at the Stanford Synchrotron Radiation Lightsource [ref Mendez]. A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$ defined by a set of crystallographic planes, where $hkl$ are the miller indices that define the planes. Such an NP will scatter photons into the detector provided it is oriented accordingly. If we define a rotation operator $\hat{\bm R}_\omega$ with $\omega$ a triple of Euler angles specifying the NP orientation, and we define the detector as the set of pixels $\{\bm q\}$, then an NP at orientation $\omega$ can scatter into the detector provided 
+An obvious precursor to the study of soft matter  CXS is that of nanoparticles (NPs). Indeed our first successful measurement of CXS was done on colloidal suspensions of silver NPs at SSRL [refs]. A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$ defined by a set of crystallographic planes, where $hkl$ are the miller indices [refs]. Such an NP will scatter photons into the detector provided it is oriented accordingly. If we define a rotation operator $\hat{\bm R}_\omega$ with $\omega$ a triple of Euler angles specifying the NP orientation, and we define the detector as the set of pixels $\{\bm q\}$, then an NP at orientation $\omega$ can scatter into the detector provided 
 
 \be \label{condition}
 \hat{\bm R}_\omega \cdot \bm G_{hkl} \in \{\bm q\}
 \ee
 
-In order to measure (\ref{corr}), a fraction of NPs in solution must be oriented such that condition (\ref{condition}) is met for two scattering vectors, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. If enough photons scatter into both vectors, then one can detect angular correlations at $\psi$ corresponding to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. As an example, consider the $\{111\}$ family of planes for face-centered-cubic metals like silver. Angular correlations will arise at
+In order to measure (\ref{corr}), a fraction of NPs in solution must be oriented such that condition (\ref{condition}) is met for two scattering vectors, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. If enough photons scatter into both vectors, then one can detect angular correlations at $\psi$ corresponding to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. As an example, consider the $\{111\}$ family of planes for FCC metals like silver: angular correlations will arise at
 
 \be
-cos(\psi) = \frac{\bm G_{111} \cdot \bm G_{11\bar{1}}}{|\bm G_{111}| |\bm G_{11\bar{1}}| } = \frac{1}{3}
+\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{11\bar{1}}}{|\bm G_{111}| |\bm G_{11\bar{1}}| } = \frac{1}{3}
 \ee
 
 and
 
 \be
-cos(\psi) = \frac{\bm G_{111} \cdot \bm G_{1\bar{1}\bar{1}}}{|\bm G_{111}| |\bm G_{1\bar{1}\bar{1}}| } = -\frac{1}{3}
+\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{\bar{1}\bar{1}1}}{|\bm G_{111}| |\bm G_{\bar{1}\bar{1}1}| } = -\frac{1}{3}
 \ee
 
-The number of NPs oriented such that condition (\ref{condition}) is met for both $\bm G_{111}$ and $\bm G_{11\bar{1}}$ or both $\bm G_{111}$ and $\bm G_{1\bar{1}\bar{1}}$ is sparse. This is why one cannot detect (\ref{corr}) by looking at a single exposure where the randomness of the solution is dominant. Instead, one must calculate angular intensity correlations for many exposures and average.
+Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [refs] between $G_{11\bar{1}}$ and $G_{\bar{1}\bar{1}1}$. Therefore, correlations of should be observed in supplementary angle pairs.  Table 1 lists the expected CXS correlations from homogenous FCC NPs.
 
-\newpage
+\section{Results}
+
+
+
 %Similarly, correlations will arise from scattering between $\{111\}$ and $\{200\}$ planes at angles given by
 
 %\be
@@ -149,21 +152,6 @@ The number of NPs oriented such that condition (\ref{condition}) is met for both
 
 
 
-There we discovered that the main inhibition to successful measurement of $C$ is systematic noise associated with non-uniformity in both the sample and the detector response. We were able to extract the relatively weak CXS signal by applying a non-linear binary filter to the data, but this was far from ideal. Since, our analysis methods have improved [see supplemental material], and we have been able to recover CXS signal without the use of any filtering. 
-
-In addition 
-
-Here we will report on CXS experiments involving solutions of silver and gold nanoparticles (NPs) in full three dimensional disorder. 
-
-In a pioneering paper, Kam \cite{Kam:1977wc} showed that correlated x-ray scattering (CXS) from an ensemble of randomly oriented particles could in principle reveal information about the internal structure of the particles beyond usual small and wide angle solution scattering measurements. The extraction of such information in the absence of an ordered system (\textit{e.g.}~a crystal) can be beneficial in biological studies, as many biological systems with well defined local structural order are inherently disordered at large length scales.
-
-In order to gauge the feasibility of Kam's method at atomic resolution and to assess the associated difficulties, we conducted experiments measuring CXS from silver nanoparticle (NP) solutions at wide angles. Crucially, each measurement was conducted on an ensemble of NPs oriented randomly in three dimensions, extending previous experimental work done in two dimensions \cite{Saldin:2011ch}, at small angles \cite{Kam:1981ua, Wochner:2009ia}, or on single particles \cite{Kam:1985tz, Starodub:1fy}. 
-
-From these experiments, we obtained empirical correlation functions between all pixel pairs in two silver Bragg rings, corresponding to Miller indices 111 and 200. Preliminary analysis of the three correlation functions (two rings correlated with themselves and with each other) show sharp peaks consistent with analytical and simulated predictions based on the crystal structure of silver.
-
-By successfully measuring CXS signal from randomly oriented ensembles of silver NPs, we have demonstrated the effectiveness of Kam's method at atomic resolution. This experiment will serve as a benchmark for future experiments involving ensemble exposures. Refinement of our experimental technique on a well characterized sample (\textit{i.e.}~silver NPs) will also help facilitate the extension of CXS to studies of weaker scatterers in solution.
-
-\section{Theory}
 
 %\begin{figure}
 %\begin{center}
