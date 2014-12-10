@@ -81,13 +81,64 @@
 
 %{\bf Keywords/phrases} 
 
-%x-ray angular correlations, Bragg peak correlations, silver nanoparticles, atomic resolution x-ray s5cattering, synchrotron radiation, solution ensemble
+%x-ray angular correlations, Bragg peak correlations, silver nanoparticles, atomic resolution x-ray scattering, synchrotron radiation, solution ensemble
 \section{CXS overview}
 
-Correlated x-ray scattering (CXS) is an emerging technique that aims to extract high order structural information from solution scattering measurements. During solution exposures, intensity correlations arise whenever a given particle scatters photons into two pixels on a detection apparatus. These pixels are defined by unique scattering vectors $\bm q_1$ and $\bm q_2$, and the angle
+Correlated x-ray scattering (CXS) is an emerging technique that aims to extract structural information from solution scattering measurements. We define a solution as a set of identical, non-interacting objects $m$, each with a unique orientation $\omega(t)$ relative to the x-ray beam axis, governed by the objects diffusion constant. We consider $m$ as a collection of $N_a$ atoms each with position vector 
+\be
+\bm r\prime_j (t) = \hat {R}_m (t)\cdot \bm r_j + \hat {T}_m(t) \qquad 1 \le j \le N_a
+\ee 
+where $\hat {R}_m(t) = \hat {R}_m (\omega(t))$ is the rotation operator and $\hat{T}_m (t)$ is a translation operator representing the center of mass position of $m$ at time $t$. If we were to freeze the solution at an instant in time and expose it to x-ray photons of wavelength $\lambda$, then we could measure the scattering function
 
 \be
-\cos ( \psi) = \frac{\bm q_1 \cdot \bm q_2}{|\bm q_1| |\bm q_2| } 
+S(\bm q, t) = \left | \sum_m \sum_{j}^{N_a} f_j(|\bm q|) \exp [ -i \,\bm q \cdot \bm  r\prime _j (t)  ] \right |^2
+\ee
+
+Here $f_j( |\bm q|  )$ is the atomic form factor of the $j^{th}$ atom$, \bm q$ represents a position in reciprocal space (e.g. of a pixel) at scattering angle  
+
+\be \label{angle}
+\sin(\theta) = \frac{ \lambda }{ 4 \pi}|\bm q|
+\ee
+
+and the outer sum is over all exposed $m$. In general, $S(\bm q, t_o)$ may be written as
+
+\be \label{ sums }
+S( \bm q, t) = \sum_m \left | A_m \right|^2 + \sum _{ m \neq m\prime } A_m A^*_{m\prime}
+\ee
+
+where 
+
+\be
+A_m = \sum_{j}^{N_a} f_j(|\bm q|) \exp [ -i \,\bm q \cdot \bm  r\prime _j (t)  ] 
+\ee
+
+The strength of the interference term on the RHS of (\ref{ sums }) depends on both the concentration of the sample, and the magnitude of the scattering angle (\ref{angle}). In what follows we will work at relatively high scattering angles, hence we can safely neglect this limit such that we have
+
+\beq \label{ scatter}
+S( \bm q, t) &=& \sum_m \left | A_m \right|^2 \\
+&=& \sum_m \left | \sum_{j}^{N_a} f_j(|\bm q|) \exp [ -i \,\bm q \cdot \bm  r\prime _j (t)]  \right | ^2   \\
+&=& \sum_m \left | \sum_{j}^{N_a} f_j(|\bm q|) \exp [ -i \,\bm q \cdot (\hat {R}_m (t)\cdot \bm r_j + \hat {T}_m(t) )]  \right | ^2 \\
+&=& \sum_m \left | \sum_{j}^{N_a} f_j(|\bm q|) \exp [ -i \,\bm q \cdot \hat {R}_m (t)\cdot \bm r_j ]  \right | ^2 
+\eeq
+
+As time progresses, each $m$ will slowly diffuse and $S(\bm q, t)$ will fluctuate about some well defined time-averaged value. During conventional SAXS and WAXS measurements, it is this average scattering function that is desirable. However, here we will show the benefits of imaging many short exposures of the solution and instead calculating the average fluctuation of $S( \bm q, t ) $.
+
+Upon exposing the solution for a finite time, we can obtain the photon intensity
+
+\be
+n_s( \bm q ) = \int_{\Delta t} S( \bm q, t ) \,dt
+\ee
+
+where $s$ s used to denote a unique exposure and $\Delta t$ is the exposure duration (assumed constant for all $s$). Provided $\Delta t$ is much shorter than the rotational diffusion time constant of each $m$, then a second exposure at a later time will differ in information content, and will therefore contribute to the average fluctuation scattering function. 
+
+\be
+C ( \bm q_1, \bm q_2 ) = \int n( \bm q_1) \, n( \bm q_2) 
+\ee
+
+During solution exposures, correlations arise whenever a given particle scatters photons into two pixels on a detection apparatus. These pixels are defined by unique scattering vectors $\bm q_1$ and $\bm q_2$. and the angle
+
+\be
+\cos (\psi) = \frac{\bm q_1 \cdot \bm q_2}{|\bm q_1| |\bm q_2| } 
 \ee
 
 is constrained by that particle's internal structure. Successful extraction of these structural constraints can enhance the problem of model refinement and prediction using solution measurements [refs]. From many snapshot exposures of solutions, it was theorized [refs] that one could extract a correlation function
