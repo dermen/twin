@@ -45,7 +45,7 @@
 
 \usepackage{authblk}
 \usepackage{lineno}
-\title{Nanoparticle twinning observed using correlated x-ray scattering with solution samples}
+\title{Nanoparticle twinning observed using solution correlated x-ray scattering}
 %\author[1]{ Derek Mendez }
 %\author[3]{ Thomas J. Lane}
 %\author[1,2]{Jongmin Sung}
@@ -85,8 +85,28 @@
 
 \section{Introduction}
 
+Solution correlated x-ray scattering (SCXS) is a growing field which involves recording many snapshot exposures of a solution, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in solution phase. An obvious precursor to the study of soft matter SCXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP solutions are used in chemical catalysis, and are critical in the oil and pharmaceutical industries. The shape and atomic structure of the NPs are directly related to their chemical properties. As such, there is great need for additional characterization methods. Much work has been done describing the thermodynamics and kinetics of NP growth and formation. It is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins. Conventional powder x-ray diffraction measurements, used widely in industry, cannot reveal the presence of NP twinning, however
 
-%x-ray angular correlations, Bragg peak correlations, silver nanoparticles, atomic resolution x-ray scattering, synchrotron radiation, solution ensemble
+A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$ defined by a set of crystallographic planes, where $hkl$ are the miller indices [refs]. Such an NP will scatter photons into the detector provided it is oriented accordingly. If we define a rotation operator $\hat{\bm R}_\omega$ with $\omega$ a triple of Euler angles specifying the NP orientation, and we define the detector as the set of pixels $\{\bm q\}$, then an NP at orientation $\omega$ can scatter into the detector provided 
+
+\be \label{condition}
+\hat{\bm R}_\omega \cdot \bm G_{hkl} \in \{\bm q\}
+\ee
+
+In order to measure (\ref{corr}), a fraction of NPs in solution must be oriented such that condition (\ref{condition}) is met for two scattering vectors, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. If enough photons scatter into both vectors, then one can detect angular correlations at $\psi$ corresponding to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. As an example, consider the $\{111\}$ family of planes for FCC metals like silver: angular correlations will arise at
+
+\be
+\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{11\bar{1}}}{|\bm G_{111}| |\bm G_{11\bar{1}}| } = \frac{1}{3}
+\ee
+
+and
+
+\be
+\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{\bar{1}\bar{1}1}}{|\bm G_{111}| |\bm G_{\bar{1}\bar{1}1}| } = -\frac{1}{3}
+\ee
+
+Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [refs] between $G_{11\bar{1}}$ and $G_{\bar{1}\bar{1}1}$. Table 1 lists the expected CXS correlations from homogenous FCC NPs.
+%x-ray angular correlations, Bragg peak correlations, silver nanoparticles, atomic %resolution x-ray scattering, synchrotron radiation, solution ensemble
 \section{CXS overview}
 
 Correlated x-ray scattering (CXS) is an emerging technique that aims to extract structural information from solution scattering measurements. We define a solution as a set of identical, non-interacting objects $m$, each with an independent orientation $\omega$ relative to the x-ray beam axis, governed by the objects diffusion constant. We consider $m$ as a collection of $N_a$ atoms each with position vector 
@@ -126,42 +146,42 @@ S( \bm q, t) &=& \sum_m \left | A^m_\omega (\bm q) \right|^2 \\
 &=& \sum_m \left | \sum_{j}^{N_a} f_j(q)\, e^ { -i \,\bm q \cdot \bm {R}^m_\omega (t)\cdot \bm r_j }  \right | ^2 
 \eeq
 
-Upon exposing the solution for a finite time, we can obtain total scattered photons
+After exposing the solution for a finite time interval $\tau$, a pixel at $\bm q$ will record 
 
 \be
-n_s( \bm q ) \propto \int_{\tau} dt \,S( \bm q, t )
+n_s( \bm q ) \propto \int_{\tau} S( \bm q, t ) dt
 \ee
 
-where $s$ is used to denote a unique exposure and $\tau$ is the exposure duration. For sufficiently long $\tau$, the number of photons scattered from particles in each orientation $\omega$ becomes a constant and we have a well defined average value 
+photons, where $s$ is used to denote a unique exposure, referred to as a “shot”. For sufficiently long $\tau$, the number of photons scattered from objects in each orientation $\omega$ becomes a constant and $n_s(\bm q)$ approaches a well defined average value
 %\be
 %\int_{\tau} dt \sum_m  \xrightarrow{\tau \rightarrow \infty} \frac{N_m}{8\pi^2}\int d\omega
 %\ee
 %and we have
 \be 
-\bar n(q) \propto \int d\omega \left | A_\omega (\bm q) \right | ^2
+\bar n(q) \propto \int \left | A_\omega (\bm q) \right | ^2 d\omega
 \ee
 
 However, provided $\tau$ is much shorter than the characteristic diffusion time, one can measure a finite fluctuation of the scattering
 
-\be
+\be \label{delta_s}
 \delta n_s(\bm q) = n_s (\bm q) - \bar n (q )
 \ee
 
-Each additional exposure will contain 
+By recording many exposure, each representing a different state of the solution frozen in time, one can construct a correlation function
 
-During solution exposures, correlations arise whenever a given particle scatters photons into two pixels on a detection apparatus. These pixels are defined by unique scattering vectors $\bm q_1$ and $\bm q_2$. and the angle
+\be \label{delta_cor}
+C( \bm q_1, \bm q_2 ) = \sum_s^{N_s} \delta n_s( \bm q_1 )\, \delta n_s( \bm q_2 ) = \sum_s^{N_s} n_s( \bm q_1) n_s (\bm q_2 )  - \bar n( q_1) \bar n(q_2)
+\ee
+
+which contains detailed information beyond that contained in the isotropic $\bar n( q)$. To understand the information content stored in (\ref{delta_cor}), one must again consider the solution frozen in time (if $\tau$ is sufficiently small then this is a valid approximation). When the flux is such that each object scatters roughly one photon into a random direction (owing to the objects random orientation) then $C \rightarrow 0$. However, if the x-ray source is bright enough, then an object can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle 
 
 \be
-\cos (\psi) = \frac{\bm q_1 \cdot \bm q_2}{|\bm q_1| |\bm q_2| } 
+\cos (\psi) = \frac{\bm q_1 \cdot \bm q_2}{q_1 \, q_2 } 
 \ee
 
-is constrained by that particle's internal structure. Successful extraction of these structural constraints can enhance the problem of model refinement and prediction using solution measurements [refs]. From many snapshot exposures of solutions, it was theorized [refs] that one could extract a correlation function
+is not; it is constrained by the objects internal atomic structure. The overall shape of (\ref{delta_corr}) will rise and fall depending on the local electronic density of the scatterers.  In practice, one probes a small region of reciprocal space during each exposure, namely the pixels on an area detector.
 
-\be \label{corr}
-C(\bm q_1, \bm q_2) \equiv C(|\bm q_1|,| \bm q_2|,\cos (\psi) ) 
-\ee
-
-dependent only on the average internal structure of the particles in solution [refs]. The overall shape of (\ref{corr}) depends on the angular constraints aforementioned: the magnitude of (\ref{corr}) will rise and fall depending on the local electronic density of the scatterers. The establishment of protocols for successfully measuring and extracting CXS signal from solution measurements has potential to revolutionize atomic imaging disciplines. It has been shown that super-resolution can be achieved using iterative algorithms which refine low-resolution models using detailed x-ray data [refs] and CXS data are extremely detailed owing to the three-dimensional parameter space. 
+The establishment of protocols for successfully measuring and extracting CXS signal from solution measurements has potential to revolutionize atomic imaging disciplines. It has been shown that super-resolution can be achieved using iterative algorithms which refine low-resolution models using detailed x-ray data [refs] and CXS data are extremely detailed owing to the three-dimensional parameter space. 
 
 The signal-to-noise ratio for (\ref{corr}) increases with each additional recorded exposure, and was proven to be independent of the number of particles in the exposed sample volume [refs]. If one can accurately separate CXS from artificial correlations in the experiment, then in principle measuring CXS of weak scatterers such as proteins in solution should be possible; one need only record enough exposures. With state-of-the-art x-ray free electron laser (xFEL) facilities one can scatter enough photons per protein in order to make such an experiment feasible [refs]. \emph{(include numbers here on protein scattering cross sections and xFEL focus/flux, showing that one can achieve, say 2+ photons per protein per exposure on average. Perhaps we can use our LCLS data to show this?)}
 
@@ -171,27 +191,7 @@ Previously, we reported on extracting CXS from silver NP solution at the Stanfor
 
 With these results we demonstrate how CXS can extract additional structural motifs not readily apparent with conventional solution scattering methods.
  
-\section{CXS of nanoparticles in solution}
 
-An obvious precursor to the study of soft matter  CXS is that of nanoparticles (NPs). Indeed our first successful measurement of CXS was done on colloidal suspensions of silver NPs at SSRL [refs]. A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$ defined by a set of crystallographic planes, where $hkl$ are the miller indices [refs]. Such an NP will scatter photons into the detector provided it is oriented accordingly. If we define a rotation operator $\hat{\bm R}_\omega$ with $\omega$ a triple of Euler angles specifying the NP orientation, and we define the detector as the set of pixels $\{\bm q\}$, then an NP at orientation $\omega$ can scatter into the detector provided 
-
-\be \label{condition}
-\hat{\bm R}_\omega \cdot \bm G_{hkl} \in \{\bm q\}
-\ee
-
-In order to measure (\ref{corr}), a fraction of NPs in solution must be oriented such that condition (\ref{condition}) is met for two scattering vectors, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. If enough photons scatter into both vectors, then one can detect angular correlations at $\psi$ corresponding to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. As an example, consider the $\{111\}$ family of planes for FCC metals like silver: angular correlations will arise at
-
-\be
-\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{11\bar{1}}}{|\bm G_{111}| |\bm G_{11\bar{1}}| } = \frac{1}{3}
-\ee
-
-and
-
-\be
-\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{\bar{1}\bar{1}1}}{|\bm G_{111}| |\bm G_{\bar{1}\bar{1}1}| } = -\frac{1}{3}
-\ee
-
-Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [refs] between $G_{11\bar{1}}$ and $G_{\bar{1}\bar{1}1}$. Therefore, correlations of should be observed in supplementary angle pairs.  Table 1 lists the expected CXS correlations from homogenous FCC NPs.
 
 \section{Results}
 
