@@ -85,30 +85,32 @@
 
 \section{Introduction}
 
-Solution correlated x-ray scattering (SCXS) is a growing field which involves recording many snapshot exposures of a solution, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in solution phase. An obvious precursor to the study of soft matter SCXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP solutions are used in chemical catalysis, and are critical in the oil and pharmaceutical industries. The shape and atomic structure of the NPs are directly related to their chemical properties. As such, there is great need for additional characterization methods. Much work has been done describing the thermodynamics and kinetics of NP growth and formation. It is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins. Conventional powder x-ray diffraction measurements, used widely in industry, cannot reveal the presence of NP twinning, however
-
-A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$ defined by a set of crystallographic planes, where $hkl$ are the miller indices [refs]. Such an NP will scatter photons into the detector provided it is oriented accordingly. If we define a rotation operator $\hat{\bm R}_\omega$ with $\omega$ a triple of Euler angles specifying the NP orientation, and we define the detector as the set of pixels $\{\bm q\}$, then an NP at orientation $\omega$ can scatter into the detector provided 
+Solution correlated x-ray scattering (SCXS) is a growing field which involves recording many snapshot exposures of a solution, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in solution phase. SCXS can reveal the structrural properties of proteins without the use of crystalization or single protein imaging. An obvious precursor to the study of soft matter SCXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP solutions are used in chemical catalysis, and are critical in the oil and pharmaceutical industries. The overall shape and atomic structure of the NPs are directly related to their chemical properties. As such, there is great need for additional characterization methods. Much work has been done describing the thermodynamics and kinetics of NP growth and formation. It is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins. Previously, twinning has been observed using electron microscopy and tomography, where one images single NP projections. On the other hand, conventional powder x-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning (figure 1).
+ 
+\section{Theory}
+If the x-ray source is bright enough, then an object can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle $\,\, \cos (\psi) = (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 )\,\,$ is not; it is constrained by the objects internal atomic structure. A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$. Let a detector be a set of pixels $\{\bm q\}$. Then an NP at orientation $\omega$ can scatter into the detector provided 
 
 \be \label{condition}
 \hat{\bm R}_\omega \cdot \bm G_{hkl} \in \{\bm q\}
 \ee
 
-In order to measure (\ref{corr}), a fraction of NPs in solution must be oriented such that condition (\ref{condition}) is met for two scattering vectors, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. If enough photons scatter into both vectors, then one can detect angular correlations at $\psi$ corresponding to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. As an example, consider the $\{111\}$ family of planes for FCC metals like silver: angular correlations will arise at
+where $\hat{\bm R}_\omega$ is a rotation operator. A fraction of NPs in solution are oriented such that condition (\ref{condition}) is met for two scattering vectors, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. This double Bragg scattering produces angular intensity correlations at $\cos \psi$ corresponding to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. For example, the $\{111\}$ family of planes for face-centered-cubic NPs will produce angular correlations at
 
 \be
-\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{11\bar{1}}}{|\bm G_{111}| |\bm G_{11\bar{1}}| } = \frac{1}{3}
+\frac{\bm G_{111} \cdot \bm G_{11\bar{1}}}{|\bm G_{111}| |\bm G_{11\bar{1}}| } = \frac{1}{3}
 \ee
 
 and
 
 \be
-\cos (\psi) = \frac{\bm G_{111} \cdot \bm G_{\bar{1}\bar{1}1}}{|\bm G_{111}| |\bm G_{\bar{1}\bar{1}1}| } = -\frac{1}{3}
+\frac{\bm G_{111} \cdot \bm G_{\bar{1}\bar{1}1}}{|\bm G_{111}| |\bm G_{\bar{1}\bar{1}1}| } = -\frac{1}{3}
 \ee
 
-Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [refs] between $G_{11\bar{1}}$ and $G_{\bar{1}\bar{1}1}$. Table 1 lists the expected CXS correlations from homogenous FCC NPs.
+(See figure 1A ). Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [refs] between $G_{11\bar{1}}$ and $G_{\bar{1}\bar{1}1}$.
 %x-ray angular correlations, Bragg peak correlations, silver nanoparticles, atomic %resolution x-ray scattering, synchrotron radiation, solution ensemble
-\section{CXS overview}
+In a typical exposure, most NPs will not scatter into the detector, and the ones that do will not be oriented such that they scatter into multiple detectable directions. Therefore, the average exposure is comprised of a large fraction of randomly scattered photons (owing to the orientation randomness in  a solution). The signal-to-noise therefore increases with the number of measured x-ray exposures. We consider an exposure as a snapshot, meaning the NPs should be spatially stable throughout the exposure duration. This is accmplished automatically with the femtosecond timescale pulses of the SACLA facility. However, SCXS can be conducted at synchrotron facilities, provided  that the sample is prepared accordingly, and that it is cooled during exposure.
 
+\section{CXS overview}
 Correlated x-ray scattering (CXS) is an emerging technique that aims to extract structural information from solution scattering measurements. We define a solution as a set of identical, non-interacting objects $m$, each with an independent orientation $\omega$ relative to the x-ray beam axis, governed by the objects diffusion constant. We consider $m$ as a collection of $N_a$ atoms each with position vector 
 \be
 \bm r^m_j (t) = \bm R^m_\omega (t)\cdot \bm r_j + \bm T^m(t) \qquad 1 \le j \le N_a
@@ -152,7 +154,7 @@ After exposing the solution for a finite time interval $\tau$, a pixel at $\bm q
 n_s( \bm q ) \propto \int_{\tau} S( \bm q, t ) dt
 \ee
 
-photons, where $s$ is used to denote a unique exposure, referred to as a ÒshotÓ. For sufficiently long $\tau$, the number of photons scattered from objects in each orientation $\omega$ becomes a constant and $n_s(\bm q)$ approaches a well defined average value
+photons, where $s$ is used to denote a unique exposure, referred to as a ï¿½shotï¿½. For sufficiently long $\tau$, the number of photons scattered from objects in each orientation $\omega$ becomes a constant and $n_s(\bm q)$ approaches a well defined average value
 %\be
 %\int_{\tau} dt \sum_m  \xrightarrow{\tau \rightarrow \infty} \frac{N_m}{8\pi^2}\int d\omega
 %\ee
