@@ -85,16 +85,16 @@
 
 \section{Introduction}
 
-Solution correlated x-ray scattering (SCXS) is a growing field which involves recording many snapshot exposures of a solution, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in solution phase. SCXS can reveal the structrural properties of proteins without the use of crystalization or single protein imaging. An obvious precursor to the study of soft matter SCXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP solutions are used in chemical catalysis, and are critical in the oil and pharmaceutical industries. The overall shape and atomic structure of the NPs are directly related to their chemical properties. As such, there is great need for additional characterization methods. Much work has been done describing the thermodynamics and kinetics of NP growth and formation. It is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins. Previously, twinning has been observed using electron microscopy and tomography, where one images single NP projections. On the other hand, conventional powder x-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning (figure 1).
+Solution correlated x-ray scattering (SCXS) is a growing field which involves recording many snapshot exposures of a solution, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in solution phase [1]. SCXS has potential to reveal the structural properties of proteins without the use of crystalization or single protein imaging. An obvious precursor to the study of soft matter SCXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP solutions are used in chemical catalysis, and the overall shape and atomic structure of the NPs are directly related to their chemical properties [2,3]. As such, there is great need for additional characterization methods. Great work has been done describing the thermodynamics and kinetics of NP growth and formation [4,5]. It is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins [6,7,8]. Previously, twinning has been observed using electron microscopy and tomography [9,10], where one images single NP projections. On the other hand, conventional powder x-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning (figure 1).
  
 \section{Theory}
-If the x-ray source is bright enough, then an object can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle $\,\, \cos (\psi) = (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 )\,\,$ is not; it is constrained by the objects internal atomic structure. A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$. Let a detector be a set of pixels $\{\bm q\}$. Then an NP at orientation $\omega$ can scatter into the detector provided 
+If the x-ray source is bright enough, then an exposed object can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle $\,\, \cos (\psi) = (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 )\,\,$ is not; it is constrained by the objects internal atomic structure. A crystalline NP scatters photons into discrete vectors $\bm G_{hkl}$. Let a detector be a set of pixels $\{\bm q\}$. Then an NP at orientation $\omega$ can scatter into the detector provided 
 
 \be \label{condition}
 \hat{\bm R}_\omega \cdot \bm G_{hkl} \in \{\bm q\}
 \ee
 
-where $\hat{\bm R}_\omega$ is a rotation operator. A fraction of NPs in solution are oriented such that condition (\ref{condition}) is met for two scattering vectors, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. This double Bragg scattering produces angular intensity correlations at $\cos \psi$ corresponding to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. For example, the $\{111\}$ family of planes for face-centered-cubic NPs will produce angular correlations at
+where $\hat{\bm R}_\omega$ is a rotation operator. During each exposure of the solution, we assume a small fraction of NPs in solution are oriented such that condition (\ref{condition}) is met for two scattering directions, $\bm G_{hkl}$ and $\bm G_{h'k'l'}$. This double Bragg scattering produces angular intensity correlations between pixels whose angular separation corresponds to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. For example, the $\{111\}$ family of planes for face-centered-cubic NPs will produce angular correlations at
 
 \be
 \frac{\bm G_{111} \cdot \bm G_{11\bar{1}}}{|\bm G_{111}| |\bm G_{11\bar{1}}| } = \frac{1}{3}
@@ -106,9 +106,16 @@ and
 \frac{\bm G_{111} \cdot \bm G_{\bar{1}\bar{1}1}}{|\bm G_{111}| |\bm G_{\bar{1}\bar{1}1}| } = -\frac{1}{3}
 \ee
 
-(See figure 1A ). Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [refs] between $G_{11\bar{1}}$ and $G_{\bar{1}\bar{1}1}$.
+in the $(111)$ Bragg ring (See figure 1A ). Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [11] between $G_{11\bar{1}}$ and $G_{\bar{1}\bar{1}1}$.
 %x-ray angular correlations, Bragg peak correlations, silver nanoparticles, atomic %resolution x-ray scattering, synchrotron radiation, solution ensemble
-In a typical exposure, most NPs will not scatter into the detector, and the ones that do will not be oriented such that they scatter into multiple detectable directions. Therefore, the average exposure is comprised of a large fraction of randomly scattered photons (owing to the orientation randomness in  a solution). The signal-to-noise therefore increases with the number of measured x-ray exposures. We consider an exposure as a snapshot, meaning the NPs should be spatially stable throughout the exposure duration. This is accmplished automatically with the femtosecond timescale pulses of the SACLA facility. However, SCXS can be conducted at synchrotron facilities, provided  that the sample is prepared accordingly, and that it is cooled during exposure.
+In a typical exposure, most NPs will not scatter into the detector, and the ones that do will not be oriented such that they scatter into multiple detectable directions. Therefore, the average exposure is comprised of a large fraction of randomly scattered photons (owing to the orientation randomness in  a solution). As such, the signal-to-noise of a single exposure is much less than unity and scales as the square root of the number of averaged exposures, $N_s$ [12]. We consider an exposure as a snapshot, meaning the NPs should not be moving significantly throughout the exposure duration. This is accomplished automatically with the femtosecond timescale pulses of the SACLA facility [13]. However, SCXS can be conducted at synchrotron facilities, provided  that the sample is prepared accordingly, and that it is cooled during exposure [14,15].
+
+\section{Experimental}
+60 nanometer Gold NPs were purchased from (NP company) and suspended in LCP at a concentration of 40 mg/mL. The viscous solution was injected into the beam as a constant stream using a (diameter) syringe. The so-called toothpaste injector oozes solution at a relatively slow rate of (rate).
+
+The SACLA beam was focused down to a roughly $25 − 50 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. the femto-second pulses were measured using a MPCCD 8-panel detector. Gain calibrations were provided by SACLA, and dark current measurements were performed every 5000 exposures and used to adjust for electronic noise natural to CCD detectors. With this setup we acquired 200,000 exposures of gold NPs.
+
+\section{Results}
 
 \section{CXS overview}
 Correlated x-ray scattering (CXS) is an emerging technique that aims to extract structural information from solution scattering measurements. We define a solution as a set of identical, non-interacting objects $m$, each with an independent orientation $\omega$ relative to the x-ray beam axis, governed by the objects diffusion constant. We consider $m$ as a collection of $N_a$ atoms each with position vector 
@@ -154,7 +161,7 @@ After exposing the solution for a finite time interval $\tau$, a pixel at $\bm q
 n_s( \bm q ) \propto \int_{\tau} S( \bm q, t ) dt
 \ee
 
-photons, where $s$ is used to denote a unique exposure, referred to as a �shot�. For sufficiently long $\tau$, the number of photons scattered from objects in each orientation $\omega$ becomes a constant and $n_s(\bm q)$ approaches a well defined average value
+photons, where $s$ is used to denote a unique exposure, referred to as a ÔøΩshotÔøΩ. For sufficiently long $\tau$, the number of photons scattered from objects in each orientation $\omega$ becomes a constant and $n_s(\bm q)$ approaches a well defined average value
 %\be
 %\int_{\tau} dt \sum_m  \xrightarrow{\tau \rightarrow \infty} \frac{N_m}{8\pi^2}\int d\omega
 %\ee
@@ -195,7 +202,38 @@ With these results we demonstrate how CXS can extract additional structural moti
  
 
 
-\section{Results}
+\section{References}
+
+1. Kam Z. 1977 Determination of macromolecular structure in solution by spatial correlation of scattering fluctuations. Macromolecules 10:927–934. (doi:10.1021/ma60059a009)
+
+2. Narayanan R and El-Sayed MA ,2005, Catalysis with Transition Metal Nanoparticles in Colloidal Solution: Nanoparticle Shape Dependence and Stability J. Phys. Chem. B, 109, 12663-12676
+
+3. Radha Narayanan and Mostafa A. El-Sayed, Shape-Dependent Catalytic Activity of Platinum Nanoparticles in Colloidal Solution, Nano Lett., Vol. 4, No. 7, 2004
+
+4. Marks, L. D. Modified Wulff Constructions for Twinned Particles. J. Cryst. Growth 1983, 61, 556−566.
+
+5. Ringe E dx.doi.org/10.1021/jp401566m | J. Phys. Chem. C 2013, 117, 15859−15870
+
+6. Stepwise Evolution of Spherical Seeds into 20-Fold Twinned Icosahedra Mark R. Langille et al. Science 337, 954 (2012); DOI: 10.1126/science.1225653
+
+7. C.Y. YANG Journal of Crystal Growth 47 (1979) 274—282
+
+8. C.Y.YANG, M.J.YACAMAN K.HEINEMANN Journal of Crystal Growth 47 (1979) 283—290
+
+9. Marks, L. D.; Smith, D. J. High-Resolution Studies of Small Particles of Gold and Silver 0.1. Multiply-Twinned Particles. J. Cryst. Growth 1981, 54, 425−432.
+
+10. Chien-Chun Chen et al Nature 496, 74–77 (04 April 2013) doi:10.1038/nature12009
+
+11. Friedel G (1913) Sur les symetries cristallines que peut reveler la diffraction des rayons Rontgen. Comptes Rendus hebdo-madaires de l’Academie des Sciences 157:1533–1536
+
+12. Kirian RA,Schmidt KE,Wang X,Doak RB,Spence JCH. 2011 Signal, noise, and resolution in correlated fluctuations from snapshot small-angle X-ray scattering . Phys. Rev. E 84, 011921. (doi:10.1103/PhysRevE.84.011921)
+
+13. Neutze R,Wouts R,van der Spoel D,Weckert E,Hajdu J. 2000 Potential for biomolecular imaging with femtosecond X-ray pulses. Nature 406, 752–757. (doi:10.1038/35021099)
+
+
+14. Kam Z,Koch MH,Bordas J. 1981 Fluctuation X-ray scattering from biological particles in frozen solution by using synchrotron radiation. Proc. Natl Acad. Sci. USA 78, 3559–3562. (doi:10.1073/pnas.78.6.3559)
+
+15. Mendez et al, 2014,  Observation of correlated X-ray scattering at atomic resolution, Phil Trans R Soc B 369: 20130315
 
 
 
