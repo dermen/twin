@@ -19,7 +19,16 @@
 %\renewcommand{\baselinestretch}{1.5} 
 \parindent .0in 
 \parskip 10pt 
+\usepackage{verbatim}
 
+\newcommand*{\matminus}{%
+  \leavevmode
+  \hphantom{0}%
+  \llap{%
+    \settowidth{\dimen0 }{$0$}%
+    \resizebox{1.1\dimen0 }{\height}{$-$}%
+  }%
+}
 
 \font \bigtenrm=cmmi10 scaled\magstep2 
 \def \dt {\delta\tau} 
@@ -45,7 +54,7 @@
 
 \usepackage{authblk}
 \usepackage{lineno}
-\title{Nanoparticle twinning observed using solution correlated x-ray scattering}
+\title{Nanoparticle twinning observed using  correlated x-ray scattering (CXS)}
 %\author[1]{ Derek Mendez }
 %\author[3]{ Thomas J. Lane}
 %\author[1,2]{Jongmin Sung}
@@ -85,79 +94,206 @@
 
 \section{Introduction}
 
-Solution correlated x-ray scattering (SCXS) is an emerging field which involves recording many snapshot exposures of a solution, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in solution phase [1]. SCXS has potential to reveal the structural properties of proteins without the use of crystalization or single protein imaging. An obvious precursor to the study of soft matter SCXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP solutions are used in chemical catalysis, and the overall shape and atomic structure of the NPs are directly related to their chemical properties [2,3]. As such, there is great need for additional characterization methods. Great work has been done describing the thermodynamics and kinetics of NP growth and formation [4,5]. It is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins [6,7,8]. Previously, twinning has been observed using electron microscopy and tomography [9,10], where one images single NP projections. On the other hand, conventional powder x-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning (figure 1).
+Correlated x-ray scattering (CXS) is an emerging field which involves recording many snapshot exposures of an ensemble of randomly oriented mono-disperse molecules or particles, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in the random ensemble[1]. CXS has potential to reveal the structural properties of proteins without the use of crystallization or single particle imaging. An obvious precursor to the study of soft matter CXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP suspensions are used in chemical catalysis, and their chemical properties are directly related to  the overall shape and atomic structure of the NPs themselves [2,3]. As such, there is a need for additional characterization methods. A lot of work has been done describing the thermodynamics and kinetics of NP growth and formation [4,5]. As a result it is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins [6,7,8]. Previously, twinning has been observed using electron microscopy and tomography [9,10], where one images single NP projections. On the other hand, conventional powder x-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning (Figure \ref{fig:contrast}). In what follows we will show how CXS combined with the exceptional brightness of the SACLA beam can reveal twinning from many snapshot exposures of a solution of gold NPs.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./8871A01_v04_update.png}
+\end{center}
+\caption{Separating twinned particles from roughly spherical particles using CXS. \textbf{a)} A spherical face-centered-cubic NP. It is a lattice with a spherical boundary. Highlighted in pink is a tetrahedral region, whose faces are (111) planes. \textbf{b)} Bragg vectors arising from the (111) planes in the spherical NP. There are 4 (111) directions giving rise to 4 Bragg vectors. (the $180^o$ symmetric planes are shown in dashed lines). c) an icosahedral twinned particles. Highlighted are two nearest-neighbor tetrahedral regions, each akin to the one in \textbf{a)}. \textbf{d)} The Bragg vectors arising from these two neighboring twins shown in \textbf{c)}. There are more directions for photons to go, leading to additional correlation angles $\cos(\psi)$. There are correlations between next-nearest neighbor twins, but these fall off rapidly in magnitude, as there are more nearest neighbor twins. \textbf{e),f)} Powder x-ray diffraction measurements of spherical and icosahedral twinned NPs, respectively. The powder scattering signals are indistinguishable.  \textbf{g), h)} Simulations of $C(q_{111},q_{111},\cos(\psi) )$ for spherical and icosahedral twinned NPs. Bulk FCC will only produce peaks at $\pm (1/3)$ whereas nearest-neighbor twins produce peaks at $\pm (1/3), \pm (5/9), \pm (7/9)$. The height of the peaks are related to the different combinations of Bragg vectors. The two signals are clearly distinguishable. Artwork courtesy of Gregory M.~Stewart (SLAC).}
+\label{fig:contrast}
+\end{figure}
  
 \section{Theory}
-If the x-ray source is bright enough, then an exposed object in solution can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle $\,\, \cos (\psi) = (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 )\,\,$ is not; it is constrained by the objects internal atomic structure. A crystalline NP scatters photons into discrete vectors $\bm g_{hkl}$. Let a detector be a set of pixels $\{\bm q\}$. Then an NP at orientation $\omega$ can scatter into the detector provided 
+If the x-ray source is bright enough, then an exposed object in a sample can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle defined by $\bm q_1$ and $\bm q_2$ 
 
-\be \label{condition}
-\hat{\bm R}_\omega \cdot \bm g_{hkl} \in \{\bm q\}
+\be \label{cpsi}
+\cos (\psi) = (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 )
 \ee
 
-where $\hat{\bm R}_\omega$ is a rotation operator. During each exposure of the solution, we assume a small fraction of NPs in solution are oriented such that condition (\ref{condition}) is met for two scattering directions, $\bm g_{hkl}$ and $\bm g_{h'k'l'}$. This double Bragg scattering produces angular intensity correlations between pixels whose angular separation corresponds to the interplanar angles between sets of crystallographic planes $hkl$ and $h'k'l'$. In a typical exposure, most NPs will not scatter into the detector, and the ones that do will not be oriented such that they scatter into multiple detectable directions. Therefore, the average exposure is comprised of a large fraction of randomly scattered photons (owing to the orientation randomness in  a solution). As such, the signal-to-noise is much less than unity for a single exposure, and scales as the square root of the number of averaged exposures, $N_s$ [12]. We consider an exposure to be a snapshot, meaning the NPs should not be moving significantly throughout the exposure duration. This is accomplished automatically with the femtosecond timescale pulses of the SACLA facility [13]. However, SCXS can be conducted at synchrotron facilities, provided  that the sample is prepared accordingly, and that it is cooled during exposure [14,15].  For example, the $\{111\}$ family of planes for face-centered-cubic NPs will produce angular correlations at
+ is not; it is constrained by the object's internal atomic structure. A crystalline NP scatters photons into discrete Bragg vectors $\bm q_{hkl}$. Let a detector define  a set of pixels $\{\bm q\}$, where each $\bm q \in \{\bm q\}$ has a unique position in reciprocal space. An NP at orientation $\omega$ can scatter photons into the detector provided 
+
+\be \label{condition}
+\hat{\bm R}_\omega \cdot \bm q_{hkl} \in \{\bm q\}
+\ee
+
+where $\hat{\bm R}_\omega$ is a rotation operator. We assume a small fraction of NPs in solution are oriented such that condition (\ref{condition}) is met for two Bragg vectors, $\bm q_{hkl}$ and $\bm q_{h'k'l'}$. When an NP is oriented as such, and if it scatters photons into both $\bm q_{hkl}$ and $\bm q_{h'k'l'}$, then these photons are correlated. This double Bragg scattering produces angular intensity correlations between pairs of pixels in $\{\bm q\}$ whose angular separation $\psi$ is defined by
+
+\be
+\cos(\psi_{hkl,h'k'l'}) =\frac{ \bm q_{hkl} \cdot \bm q_{h'k'l'} } {q_{hkl}\, q_{h'k'l'}} 
+\ee
+
+This corresponds to the interplanar angle between crystallographic planes $hkl$ and $h'k'l'$. In a typical exposure, most NPs will not scatter into the detector, and the ones that do will not be oriented such that they scatter into multiple detectable directions. Therefore, the average exposure is comprised of a large fraction of randomly scattered photons (owing to the orientation randomness in  a solution). As such, the signal-to-noise is much less than unity for a single exposure, and scales as the square root of the number of averaged exposures, $N_s$ [12]. We consider an exposure to be a snapshot, meaning the NPs should not be moving significantly throughout the exposure duration. This is accomplished automatically with the femtosecond timescale pulses of the SACLA facility [13].  CXS can also be conducted at synchrotron radiation facilities, provided  that the sample is prepared accordingly, and that it is cooled during exposure [14,15]. 
+
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./raw_dif.png}
+\end{center}
+\caption{\textbf{a)} Computation of $C_r(\Delta)$ for 174k exposures of gold NP solution. Shows the strong artificial correlation signal associated with experimental noise terms. b) Computation of $\tilde{C}(\Delta)$ for 87k pairs of exposures. Without further processing, the CXS signal arising from the gold NPs in solution is clear.}
+\label{fig:raw_dif}
+\end{figure}
+
+\section{The Experiment}
+The main effort reported in this paper was the successful measurement of CXS for gold NPs at the SACLA beam facility in Japan. 60 nanometer Gold NPs were purchased from Nanopartz Inc. [ref] and suspended in LCP (lipid cubic phase, [ref])at a concentration of 40 mg/mL. The viscous solution was injected into the beam as a constant stream using a  hamilton 7780 syringe needle with inner diameter 130 $\mu m$.
+
+The SACLA beam was focused down to a roughly $25 \times 50 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. The femto-second pulses were measured using an MPCCD 8-panel detector [ref]. Gain calibrations were provided by SACLA [ref], and dark current measurements (detector readouts with the shutter closed) were performed every $5\times 10^3$ exposures and used to adjust for electronic noise common to CCD detectors. With this setup we acquired $1.6\times 10^5$ exposures of gold NPs. Each gold NP has a well-defined face-centered-cubic (FCC) lattice structure. For simplicity, we will only discuss correlations arising from the $\{111\}$ family of planes. There are 4 distinct $\{111\}$ planes: $111$,$11\bar 1$,$\bar 1 1\bar 1$,$1\bar 1 \bar 1$, and the mirror-symmetric planes, $\bar 1\bar 1\bar 1$,$\bar 1\bar 1 1$,$1 \bar 11$,$\bar 1 1 1$.  These planes scatter photons into a Bragg ring of constant magnitude $q_{111} = ( 2\pi ) / ( d_{111} )$ where $d_{111}$ is the interplanar spacing.  Let $\bm Q_{111} = \{\bm q_{111}, \bm q_{11\bar 1},\bm q_{\bar 1 1\bar 1},\bm q_{1\bar 1 \bar 1},\bm q_{\bar 1\bar 1\bar 1},\bm q_{\bar 1\bar 1 1},\bm q_{1 \bar 11},\bm q_{\bar 1 1 1}\}$ be the corresponding set of $\{111\}$ Bragg vectors. One can determine where correlations arise analytically by evaluating (\ref{cpsi}) $\forall \, \bm q_1, \bm q_2\ne \bm q_1 \in \bm Q_{111}$. Note that for mirror-symmetric Bragg vectors, e.g. $\bm q_{111}$ and $\bm q_{\bar 1\bar 1\bar 1}$,  $\psi = 180^o$, which is difficult to measure with conventional detectors. In general, scattered photons are recorded on a planar detector, assumed perpendicular to the incoming x-rays. On such a detector, the maximum angle $\psi$ that one can detect $\{111\}$ correlations at is $4\,\theta_{111}$ where $\theta_{111}$ is the scattering angle at wavelength $\lambda$, defined by
+
+\be
+\sin (\theta_{111})   = \frac{ \lambda  }{ 4\pi } \, q_{111}
+\ee
+
+For defect-free gold NPs (modeled as single FCC domains with spherical boundaries), one should only expect correlations to arise at values $\cos(\psi) = \pm (1/3)$. For example, 
 
 \be \label{g1}
-\frac{\bm g_{111} \cdot \bm g_{11\bar{1}}}{|\bm g_{111}| |\bm g_{11\bar{1}}| } = \frac{1}{3}
+\frac{\bm q_{111} \cdot \bm q_{11\bar{1}}}{(q_{111})^2}  = \frac{1}{3}
 \ee
 
 and
 
 \be \label {g2}
-\frac{\bm g_{111} \cdot \bm g_{\bar{1}\bar{1}1}}{|\bm g_{111}| |\bm g_{\bar{1}\bar{1}1}| } = -\frac{1}{3}
+\frac{\bm q_{111} \cdot \bm q_{\bar{1}\bar{1}1}}{(q_{111})^2} = -\frac{1}{3}
 \ee
 
-in the $\{111\}$ Bragg ring (See figure 1A ). Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [11] between $g_{11\bar{1}}$ and $g_{\bar{1}\bar{1}1}$. The $\{111\}$ planes scatter photons into a Bragg ring of constant magnitude $q_{111} = ( 2\pi ) / ( d_{111} )$ where $d_{111}$ is the spacing between (111) planes. These photons forms a Bragg ring of pixels $I(q_{111},\phi)$ on a planar detector. In order to realize the correlations (\ref{g1}, \ref{g2}), one calculates the mean auto-correlation of $\{111\}$ Bragg rings over exposures $s$
-
-\be \label{autocorr}
-C(q_{111}, q_{111}, \Delta) = \sum _s ^ {N_s} \int _0^{2\pi} I_s(q_{111}, \phi  )\, I_s(q_{111}, \phi + \Delta)\, d\phi
-\ee
-
+(Figure \ref{fig:contrast}). Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [11] between $q_{11\bar{1}}$ and $q_{\bar{1}\bar{1}1}$. The azimuthal position of each scattered photon (defined as $\phi$ in the plane of the detector) depends on the orientation of the NP which scattered it. For a solution of NPs, many photons will scatter into all angles $\phi$, forming Bragg rings on the detector. We let $n_s^\phi (q_{111}) \equiv n_s^\phi$ represent the number of photons scattered into a pixel along the $\{111\}$ Bragg ring during an exposure denoted by $s$. In order to realize the correlations (\ref{g1}, \ref{g2}), one calculates the mean auto-correlation of $\{111\}$ Bragg rings across exposures
+\beq \label{autocorr}
+C( \Delta) &=& \sum _s ^ {N_s} \sum_{\phi=0}^{\phi=2\pi} n_s^\phi\, n_s^{\phi + \Delta} \\
+&=& \sum_{\phi=0}^{\phi=2\pi} C\,^\phi(\Delta) 
+\eeq
 and projects [ref] this correlation onto the Ewald sphere using the relationship
-
 \be
 \cos( \psi) = cos( \Delta ) \, \cos ^2 ( \theta_{111} )  + \sin ^2(\theta_{111} )  
 \ee
 
-where $\theta_{111}$ is the scattering angle at wavelength $\lambda$
+If there are $N_\phi$ pixels around the ring, then $\phi$ and $\Delta$ can take on values $(2\pi j/N_\phi)$ for $j = 0,1,. . . ,N_\phi-1$. A relatively small fraction of the photons $n_s^\phi$ are correlated as discussed above, meaning additional pixels are being illuminated by the same object which scattered them. Therefore we let $n_s^\phi = c_s^\phi + u_s^\phi$ where $c_s^\phi$ are the correlated photons, and $u_s^\phi$ are the uncorrelated photons. With this, we see more clearly the terms contributing to  (\ref{autocorr}) :
+%For NPs, whether a photon contributes to $u$ or $c$ is dictated by the orientation $\omega$. %For soft matter, with lower cross section, the separation of $u$ and $c$ depends more heavily %on the flux. For instance, an object which scatters only 1 photon will not contribute to $c$.
+\beq
+C\,^\phi(\Delta) &=& \sum_s^{N_s} n_s^\phi\, n_s^{\phi + \Delta} \\
+&=& \sum_s^{N_s} \left( u_s^\phi\,+\,c_s^ \phi \right)\,\left( u_s^{ \phi+\Delta} \,+\, c_s^{\phi+\Delta} \right ) \\
+&=& \sum_s^{N_s} \left( u_s^\phi\, u_s^{\phi+\Delta} + u_s^\phi\, c_s^{\phi+\Delta} + c_s^\phi\, u_s^{\phi+\Delta}  +  c_s^\phi\, c_s^{\phi+\Delta} \right )
+\eeq
 
-\be
-q_{111} = \frac{ 4\pi }{\lambda } \sin (\theta_{111})  
+The only terms which are correlated (for specific values of $\Delta$) are $c_s^\phi\,c_s^{\phi+\Delta}$. Therefore
+
+\be \label{cphi2}
+C\,^\phi(\Delta) = \bar{u}\,^2 + 2\,\bar{u}\bar{c} + \sum_s^{N_s}c_s^\phi c_s^{\phi + \Delta} 
 \ee
 
+where $\bar{u}$/$\bar{c}$ represent the average number of uncorrelated/correlated photons scattered into the $q_{111}$ Bragg ring, respectively. These values are isotropic in the azimuthal component, only varying with scattering angle. 
 
-\section{Experimental}
-60 nanometer Gold NPs were purchased from Nanopartz Inc. [ref] and suspended in LCP at a concentration of 40 mg/mL. The viscous solution was injected into the beam as a constant stream using a  hamilton 7780 syringe needle with inner diameter 130 $\mu m$.
-
-The SACLA beam was focused down to a roughly $25 − 50 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. The femto-second pulses were measured using a MPCCD 8-panel detector [ref]. Gain calibrations were provided by SACLA [ref], and dark current measurements (detector readouts with the shutter closed) were performed every $5\times 10^3$ exposures and used to adjust for electronic noise common to CCD detectors. With this setup we acquired $2\times 10^6$ exposures of gold NPs which were then processed in order to calculate (\ref{autocorr}). As previously reported, any artificial correlations associated with the experiment are detrimental, and can corrupt the calculation of (\ref {autocorr}). We model the Bragg ring of a single exposure as
+As previously reported, any artificial correlations associated with the experiment are detrimental, and can corrupt the calculation of (\ref {autocorr}). Next we describe in detail a previously proposed method [ref] for suppressing these artifacts. We model the median-normalized intensity in a pixel at $q_{111}, \phi$ of a single exposure as
 
 \be
-I_s( \phi ) = 
+I_s^ \phi  = \frac{ k_s^\phi \,\left( j_s^\phi  + \,n_s^\phi  \right ) }{ M_s} 
 \ee
+
+where $M_s$ is the median pixel value on the ring,  $j_s^\phi$ is random scattered photons coming from the background (e.g. water, buffer), and $k_s^\phi$ models the non-uniformity on the detector, due to effects such as shadows and polarization. We work with normalized intensities in order to account for fluctuation in sample volume due to small instabilities in the injector system which causes more or less photons to scatter. The $k_s^\phi$ modulations make it very difficult to extract e.g. the CXS signal (\ref{autocorr}). If one were to calculate the raw correlation
+
+\be \label{rawCorr}
+C_{r}(\Delta) = \sum_s^{N_s} \sum_{\phi=0}^{\phi=2\pi} \left( I_s^\phi  - \left \langle {I_s} \right \rangle _\phi \right)\,\left(I_s^{\phi+\Delta}  - \left\langle {I_s}\right\rangle _\phi \right)
+\ee
+
+one would notice there is very strong artificial signal associated with the correlations between the $j_s^\phi$ and $k_s^\phi$ terms. In fact, these terms make it nearly impossible to determine the signal (\ref{autocorr}); the background terms are dominant (Figure 2). Previously we reported on a binary filter method used to extract the CXS signal, however information on CXS magnitude was lost [15]. We now discuss in detail the difference correlation method for removing artificial correlations, first discussed in [14]. In general, $k_s^\phi$ is slowly varying across exposures, compared to the time between consecutive exposures. Therefore we may record the difference between two pixel intensities as
+
+\beq
+I_s^\phi - I_{s'}^\phi &=& k^\phi\left( \frac{j_s^\phi}{M_s} - \frac{j_{s'}^\phi}{M_{s'}}  + \frac{n_s^\phi}{M_s} - \frac{n_{s'}^\phi}{M_{s'}} \right) \\
+&\approx& k^\phi \left( \frac{n_s^\phi}{M_s} - \frac{n_{s'}^\phi}{M_s'} \right ) \\
+&\equiv& I_{s,s'}^\phi
+\eeq
+
+where we assume background fluctuations between exposures ($j_s^\phi - j_{s’}^\phi$) are much less than those of the NPs. This is a fair approximation for NPs, whose scattering cross sections are typical higher than those of the solvent. Consider a variant of (\ref{rawCorr})
+
+\beq \label{cdif}
+\tilde{C}(\Delta) &=& \sum _s^{N_s/2} \sum_{\phi=0}^{\phi=2\pi} I_{2s, 2s+1}^\phi\,\, I_{2s,2s+1}^{\phi + \Delta} \\
+&=& \sum_{\phi=0}^{\phi=2\pi}  \tilde{C}\,^\phi( \Delta)
+\eeq
+
+where
+
+\beq
+\tilde{C}\,^\phi(\Delta) &=& k^\phi k^{\phi+\Delta} \sum_s^{N_s/2} \left( n_{2s}^\phi n_{2s}^{\phi+\Delta} \,+\,   n_{2s+1}^\phi n_{2s+1}^{\phi+\Delta} \,-\,  n_{2s}^\phi n_{2s+1}^{\phi+\Delta} \,-\,  n_{2s+1}^\phi\,n_{2s}^{\phi+\Delta} \right)\\
+&=& k^\phi k^{\phi+\Delta }\left(  C\,^\phi(\Delta) - \sum_s^{N_s/2} \left ( n_{2s}^\phi n_{2s+1}^{\phi+\Delta} \,+\, n_{2s+1}^\phi\,n_{2s}^{\phi+\Delta}  \right) \right ) 
+\eeq
+
+Typically, $k_s^\phi$ will indeed vary throughout the course of an experiment. In this case, we cluster the exposures for which $k^\phi$ is roughly constant, compute $\tilde{C}\,^\phi(\Delta)$ for each cluster, and average the results. Terms of the form $n_s\, n_{s'}$ are statistically independent; photons scattering in shot $s$ are uncorrelated with photons scattering in shot $s'$. Therefore,
+
+\be
+\sum_s ^{N_s / 2} \left ( n_{2s}^\phi n_{2s+1}^{\phi+\Delta} \,+\,  n_{2s+1}^\phi\,n_{2s}^{\phi+\Delta} \right) \rightarrow \bar{n}^2
+\ee
+
+where $\bar{n}$ represents the average number of photons scattered by NPs measured in the pixel at $q$ and is isotropic with respect to the azimuthal. With this we have
+
+\beq
+\tilde{C}(\Delta) &=& \sum_{\phi=0}^{\phi=2\pi}  \tilde{C}\,^\phi(\Delta) \\
+&=& \sum_{\phi=0}^{\phi=2\pi}  k^\phi k^{\phi+\Delta}  \left( C\,^\phi(\Delta) - \bar{n}^2    \right ) \\
+\eeq
+
+Substituting (\ref{cphi2}) into the above yields
+
+\beq
+\tilde{C}(\Delta) &=& \sum_{\phi=0}^{\phi=2\pi}  k^\phi k^{\phi+\Delta} \left( \bar{u}\,^2 + 2\,\bar{u}\bar{c} + \sum_s^{N_s}c_s^\phi c_s^{\phi + \Delta}  - \bar{n}^2  \right ) \\
+&=&  \sum_{\phi=0}^{\phi=2\pi}  k^\phi k^{\phi+\Delta} \left( \bar{u}\,^2 + 2\,\bar{u}\bar{c} + \sum_s^{N_s}c_s^\phi c_s^{\phi + \Delta} - ( \bar{u} + \bar{c}  )^2 \right ) \\
+&=& \sum_{\phi=0}^{\phi=2\pi}  k^\phi k^{\phi+\Delta} \left( \sum_s^{N_s}  c_s^\phi c_s^{\phi+\Delta} - \bar{c}^2 \right )
+\eeq
+
+Computation of (\ref{cdif}) for 87,000 exposures of gold NPs from SACLA is shown in Figure 2. While we only have empirical evidence to support the power of (\ref{cdif}), the results are striking.
+
+\section{Discussion}
+An elementary gold NP model consists of an (FCC) lattice with a spherical boundary (Figure 1a, 1g). Let $\{\bm q_{111}\}$ be the set of all $\{111\}$ Bragg vectors. By considering all pairs of vectors $\bm q_1, \bm q_2 \in \{\bm q_{111}\}$ one can show that $\cos (\psi)$ can only take on values $\pm (1/3)$. However, if the NPs are twinned, the reciprocal space becomes more complex. To see this more clearly, consider a simple model for tetrahedral nearest-neighbor FCC twins (Fig 1c). The twins have the same internal lattice structure, however one is rotated relative to the other in a way that preserves a common crystallographic direction. As a typical example, consider a rotation of $180^{o}$ about the $(111)$ direction, given by the matrix
+
+\be
+\mathbf{T} = \begin{bmatrix}
+       \frac{-1}{3} & \frac{2}{3} & \frac{2}{3}           \\[0.3em]
+       \frac{2}{3} & \frac{\matminus 1}{3}           & \frac{2}{3} \\[0.3em]
+       \frac{2}{3}           & \frac{2}{3} & \frac{-1}{3}
+     \end{bmatrix}
+\ee
+
+Application of this matrix leads to additional correlation angles
+
+\be
+\frac{ \bm q_{\bar{1}\bar{1}1} \cdot \mathbf T \cdot \bm q_{1\bar{1}1}} {{|\bm q_{\bar 1 \bar 1 1}| |\bm q_{1\bar{1}1}| }} \,=\, \frac { ( −1,-1,1 ) \cdot \mathbf T \cdot ( 1,-1,1 ) } {3} \,=\, \frac{5}{9}
+\ee
+
+and similary
+
+\be
+\frac{ \bm q_{11 \bar{1}} \cdot \bm T \cdot \bm q_{\bar{1}\bar{1}1}} { {|\bm q_{11\bar 1}| |\bm q_{ \bar 1 \bar 1 1}| } } \,=\, \frac{7}{9}
+\ee
+
+, with correlations arising at $\cos (\psi) = \pm(1/3),\, \pm (5/9),\,  \pm (7/9)$.
+
+These values are precisely the peak locations shown in Figure 1h and Figure 2b. Previously, when we reported on CXS of silver NPs, we only observed peaks at $\cos(\psi) = \pm (1/3)$, however their we made use of a non-linear binary filter which reduced the information content. Further, the amount of data (15k exposures) was limited due to the typically long exposure times at synchrotrons compared to those at SACLA. Prior to analyzing the SACLA dataset, we have computed (\ref{cdif}) for the SSRL dataset, and first took note of what appeared to be additional CXS peaks (Figure 3), which were not predicted by the elementary NP model (Figure 1a). This was initially puzzling, but after comparing with the SACLA gold NP dataset (Figure 3), we realized these correlations were in fact real, and were representing a more general property of small FCC NPs.
+
+\begin{comment}
+
+In order to see the power of the difference correlation, one must split $n$ as a sum of correlated photons $c$ and uncorrelated photons $u$. 
+
+\beq
+C_\phi &=& \sum _s^{N_s} (c_s + u_s ) ( c_s^\Delta + u_s^\Delta) \\
+&=&\sum _s^{N_s} \left( c_s c_s^\Delta + c_s u_s^\Delta + u_s c_s^\Delta + u_s u_s^\Delta \right ) \\
+&=&\sum _s^{N_s} \left( c_s c_s^\Delta + c_s u_s^\Delta \right )+ \bar{u}\bar {n}^\Delta
+\eeq
+
 \section{Supplemental}
-Correlated x-ray scattering (CXS) is an emerging technique that aims to extract structural information from solution scattering measurements. We define a solution as a set of identical, non-interacting objects $m$, each with an independent orientation $\omega$ relative to the x-ray beam axis, governed by the objects diffusion constant. We consider $m$ as a collection of $N_a$ atoms each with position vector 
+Correlated x-ray scattering (CXS) is an emerging technique that aims to extract structural information from ensmble  scattering measurements. We define the sample ensemble as a set of identical, non-interacting objects $\{m\}$, each with an independent orientation $\omega$ relative to the x-ray beam axis, governed by the object's diffusion constant. We consider each object $m$ as a collection of $N_a$ atoms each with position vector 
 \be
 \bm r^m_j (t) = \bm R^m_\omega (t)\cdot \bm r_j + \bm T^m(t) \qquad 1 \le j \le N_a
 \ee 
 where $\bm R^m_\omega(t)$ is a rotation operator, $\bm T^m (t)$ is a translation operator representing the center of mass position of $m$ at time $t$, and $\bm r_j$ is the position of the $j^{th}$ atom at an arbitrarily defined initial orientation. If we were to freeze the solution at an instant in time and expose it to x-ray photons of wavelength $\lambda$, then we could measure the scattering function
-
 \be
 S(\bm q, t) = \left | \sum_m \sum_{j}^{N_a} f_j(q) \,e ^ { -i \,\bm q \cdot \bm  r^m _j (t)  } \right |^2
 \ee
-
 Here $f_j( q  )$ is the atomic form factor of the $j^{th}$ atom$, \bm q$ represents a position in reciprocal space (e.g. of a pixel) at scattering angle  
-
 \be \label{angle}
 \sin(\theta) = \frac{ \lambda }{ 4 \pi}\,q
 \ee
-
 and the outer sum is over all exposed $m$. In general, $S(\bm q, t)$ may be written as
-
 \be \label{ sums }
 S( \bm q, t) = \sum_m \left | A^m_\omega (\bm q ) \right|^2 + \sum _{ m \neq m' } A^m_\omega (\bm q) \left (A^{m'}_\omega (\bm q) \right )^*
 \ee
-
 where 
-
 \be
 A^m_\omega (\bm q) = \sum_{j}^{N_a} f_j(q) e^{ -i \,\bm q \cdot \bm  r^m_j (t)  }
 \ee
@@ -174,62 +310,61 @@ S( \bm q, t) &=& \sum_m \left | A^m_\omega (\bm q) \right|^2 \\
 After exposing the solution for a finite time interval $\tau$, a pixel at $\bm q$ will record 
 
 \be
-n_s( \bm q ) \propto \int_{\tau} S( \bm q, t ) dt
+n_s( \bm q ) \propto \int_{\tau} S( \bm q, t ) d\tau
 \ee
 
-photons, where $s$ is used to denote a unique exposure, referred to as a ÔøΩshotÔøΩ. For sufficiently long $\tau$, the number of photons scattered from objects in each orientation $\omega$ becomes a constant and $n_s(\bm q)$ approaches a well defined average value
+photons, where $s$ is used to denote a unique exposure, referred to as a ``shot". 
+%For sufficiently long $\tau$, the number of photons scattered from objects in each orientation $\omega$ becomes a constant and $n_s(\bm q)$ approaches a well defined average value
 %\be
 %\int_{\tau} dt \sum_m  \xrightarrow{\tau \rightarrow \infty} \frac{N_m}{8\pi^2}\int d\omega
 %\ee
 %and we have
+for each shot it is convenient to define an angular average over the azimuthal angle $\phi$ as
 \be 
-\bar n(q) \propto \int \left | A_\omega (\bm q) \right | ^2 d\omega
+\bar{n}_s(q)=\sum_{\phi} n_s( \bm q,\phi ) 
 \ee
-
-However, provided $\tau$ is much shorter than the characteristic diffusion time, one can measure a finite fluctuation of the scattering
-
+However, provided $\tau$ is much shorter than the characteristic diffusion time, one can measure a finite  deviationof the scattering
 \be \label{delta_s}
-\delta n_s(\bm q) = n_s (\bm q) - \bar n (q )
+\delta n_s(\bm q) = n_s (\bm q) - \bar {n}_s (q )
 \ee
 
-By recording many exposure, each representing a different state of the solution frozen in time, one can construct a correlation function
-
+By recording many exposures, each representing a different state of the solution frozen in time, one can construct a correlation function
 \be \label{delta_cor}
-C( \bm q_1, \bm q_2 ) = \sum_s^{N_s} \delta n_s( \bm q_1 )\, \delta n_s( \bm q_2 ) = \sum_s^{N_s} n_s( \bm q_1) n_s (\bm q_2 )  - \bar n( q_1) \bar n(q_2)
+C( \bm q_1, \bm q_2 ) = \sum_s^{N_s} \delta n_s( \bm q_1 )\, \delta n_s( \bm q_2 ) = \sum_s^{N_s} \left \{n_s( \bm q_1) n_s (\bm q_2 )  - \bar n_s( q_1) \bar n_s(q_2)\right \}
 \ee
+which contains detailed information beyond that contained in the isotropic $\bar n( q)$. To understand the information content stored in (\ref{delta_cor}), one must again consider the solution frozen in time (if $\tau$ is sufficiently small then this is a valid approximation). In the limit that the flux is so weak that  the probability for one object to scatter two photons tends to zero, then only single scattering occurs into random directions and $C \rightarrow 0$. 
+\end{comment}
 
-which contains detailed information beyond that contained in the isotropic $\bar n( q)$. To understand the information content stored in (\ref{delta_cor}), one must again consider the solution frozen in time (if $\tau$ is sufficiently small then this is a valid approximation). When the flux is such that each object scatters roughly one photon into a random direction (owing to the objects random orientation) then $C \rightarrow 0$. 
 
 \section{References}
 
-1. Kam Z. 1977 Determination of macromolecular structure in solution by spatial correlation of scattering fluctuations. Macromolecules 10:927–934. (doi:10.1021/ma60059a009)
+1. Kam Z. 1977 Determination of macromolecular structure in solution by spatial correlation of scattering fluctuations. Macromolecules 10:927‚Äì934. (doi:10.1021/ma60059a009)
 
 2. Narayanan R and El-Sayed MA ,2005, Catalysis with Transition Metal Nanoparticles in Colloidal Solution: Nanoparticle Shape Dependence and Stability J. Phys. Chem. B, 109, 12663-12676
 
 3. Radha Narayanan and Mostafa A. El-Sayed, Shape-Dependent Catalytic Activity of Platinum Nanoparticles in Colloidal Solution, Nano Lett., Vol. 4, No. 7, 2004
 
-4. Marks, L. D. Modified Wulff Constructions for Twinned Particles. J. Cryst. Growth 1983, 61, 556−566.
+4. Marks, L. D. Modified Wulff Constructions for Twinned Particles. J. Cryst. Growth 1983, 61, 556‚àí566.
 
-5. Ringe E dx.doi.org/10.1021/jp401566m | J. Phys. Chem. C 2013, 117, 15859−15870
+5. Ringe E dx.doi.org/10.1021/jp401566m | J. Phys. Chem. C 2013, 117, 15859‚àí15870
 
 6. Stepwise Evolution of Spherical Seeds into 20-Fold Twinned Icosahedra Mark R. Langille et al. Science 337, 954 (2012); DOI: 10.1126/science.1225653
 
-7. C.Y. YANG Journal of Crystal Growth 47 (1979) 274—282
+7. C.Y. YANG Journal of Crystal Growth 47 (1979) 274‚Äî282
 
-8. C.Y.YANG, M.J.YACAMAN K.HEINEMANN Journal of Crystal Growth 47 (1979) 283—290
+8. C.Y.YANG, M.J.YACAMAN K.HEINEMANN Journal of Crystal Growth 47 (1979) 283‚Äî290
 
-9. Marks, L. D.; Smith, D. J. High-Resolution Studies of Small Particles of Gold and Silver 0.1. Multiply-Twinned Particles. J. Cryst. Growth 1981, 54, 425−432.
+9. Marks, L. D.; Smith, D. J. High-Resolution Studies of Small Particles of Gold and Silver 0.1. Multiply-Twinned Particles. J. Cryst. Growth 1981, 54, 425‚àí432.
 
-10. Chien-Chun Chen et al Nature 496, 74–77 (04 April 2013) doi:10.1038/nature12009
+10. Chien-Chun Chen et al Nature 496, 74‚Äì77 (04 April 2013) doi:10.1038/nature12009
 
-11. Friedel G (1913) Sur les symetries cristallines que peut reveler la diffraction des rayons Rontgen. Comptes Rendus hebdo-madaires de l’Academie des Sciences 157:1533–1536
+11. Friedel G (1913) Sur les symetries cristallines que peut reveler la diffraction des rayons Rontgen. Comptes Rendus hebdo-madaires de l‚ÄôAcademie des Sciences 157:1533‚Äì1536
 
 12. Kirian RA,Schmidt KE,Wang X,Doak RB,Spence JCH. 2011 Signal, noise, and resolution in correlated fluctuations from snapshot small-angle X-ray scattering . Phys. Rev. E 84, 011921. (doi:10.1103/PhysRevE.84.011921)
 
-13. Neutze R,Wouts R,van der Spoel D,Weckert E,Hajdu J. 2000 Potential for biomolecular imaging with femtosecond X-ray pulses. Nature 406, 752–757. (doi:10.1038/35021099)
+13. Neutze R,Wouts R,van der Spoel D,Weckert E,Hajdu J. 2000 Potential for biomolecular imaging with femtosecond X-ray pulses. Nature 406, 752‚Äì757. (doi:10.1038/35021099)
 
-
-14. Kam Z,Koch MH,Bordas J. 1981 Fluctuation X-ray scattering from biological particles in frozen solution by using synchrotron radiation. Proc. Natl Acad. Sci. USA 78, 3559–3562. (doi:10.1073/pnas.78.6.3559)
+14. Kam Z,Koch MH,Bordas J. 1981 Fluctuation X-ray scattering from biological particles in frozen solution by using synchrotron radiation. Proc. Natl Acad. Sci. USA 78, 3559‚Äì3562. (doi:10.1073/pnas.78.6.3559)
 
 15. Mendez et al, 2014,  Observation of correlated X-ray scattering at atomic resolution, Phil Trans R Soc B 369: 20130315
 
