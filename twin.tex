@@ -97,7 +97,7 @@
 Correlated x-ray scattering (CXS) is an emerging field which involves recording many snapshot exposures of an ensemble of randomly oriented mono-disperse molecules or particles, and employing photon intensity correlation analysis in order to recover a function dependent only on the average internal structure of the objects in the random ensemble[1]. CXS has potential to reveal the structural properties of proteins without the use of crystallization or single particle imaging. An obvious precursor to the study of soft matter CXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. NP suspensions are used in chemical catalysis, and their chemical properties are directly related to  the overall shape and atomic structure of the NPs themselves [2,3]. As such, there is a need for additional characterization methods. A lot of work has been done describing the thermodynamics and kinetics of NP growth and formation [4,5]. As a result it is known that smaller NPs (tens of nanometers) tend to form complicated twinning structures, e.g. icosahedral twins [6,7,8]. Previously, twinning has been observed using electron microscopy and tomography [9,10], where one images single NP projections. On the other hand, conventional powder x-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning (Figure \ref{fig:contrast}). In what follows we will show how CXS combined with the exceptional brightness of the SACLA beam can reveal twinning from many snapshot exposures of a solution of gold NPs.
 
 \section{Background}
-If an x-ray source is bright enough, then an object iexposed to it can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle defined by $\bm q_1$ and $\bm q_2$ 
+If an x-ray source is bright enough, then an object exposed to it can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object is random, the angle defined by $\bm q_1$ and $\bm q_2$ 
 
 \be \label{cpsi}
 \cos (\psi) = (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 )
@@ -115,74 +115,136 @@ where $\hat{\bm R}_\omega$ is an operator which rotates the NP from some pre-def
 \cos(\psi_{hkl,h'k'l'}) =\frac{ \bm q_{hkl} \cdot \bm q_{h'k'l'} } {q_{hkl}\, q_{h'k'l'}} 
 \ee
 
-This corresponds to the interplanar angle between crystallographic planes $hkl$ and $h'k'l'$. In a typical exposure, most NPs will not scatter into the detector, and the ones that do will not be oriented such that they scatter into multiple detectable directions. Therefore, the average exposure is comprised of a large fraction of randomly scattered photons (owing to the orientation randomness in  a solution). As such, the signal-to-noise is much less than unity for a single exposure, and scales as the square root of the number of averaged exposures, $N_s$ [12]. We consider an exposure to be a snapshot, meaning the NPs should not be moving significantly throughout the exposure duration. This is accomplished automatically with the femtosecond timescale pulses of the SACLA facility [13].  CXS can also be conducted at synchrotron radiation facilities, provided  that the sample is prepared accordingly, and that it is cooled during exposure [14,15]. 
+Analytically speaking, $\psi_{hkl,h'k'l'}$ is also the interplanar angle between crystallographic planes $hkl$ and $h'k'l'$. Typically, the pixels $\{\bm q\}$ are arranged on a planar detector, assumed perpendicular to the forward x-ray beam. On such a detector, the angle $\psi$ is related to the azimuthal degree of separation $\Delta = \phi_1  - \phi_2$ between 2 pixels on the detector via the formula
+
+\be \label{project}
+\cos(\psi) = \cos( \Delta )\cos( \theta_1)\cos(\theta_2) + \sin(\theta_1)\sin(\theta_2)
+\ee
+
+where $\theta$ is the scattering angle for photons at wavelength $\lambda$, defined by
+
+\be
+\sin (\theta)   = \frac{ \lambda  }{ 4\pi } \, q
+\ee
+
+Note, geometrically, $\psi$ has maximum when $\Delta=\pi$, hence
+
+\be \label{psimax}
+\cos(\psi_{max}) = - \cos( \theta_1)\cos(\theta_2) + \sin(\theta_1)\sin(\theta_2)
+\ee
+
+For a solution of NPs, photons will scatter into all angles $\phi$, forming Bragg rings on the detector at scattering angles $q_{hkl}$, dependent on the lattice structure. For an exposure $s$, we let
+\be
+n_s^\phi (q_{hkl}) \equiv n_{1,s}^\phi
+\ee
+and 
+\be
+n_s^\phi (q_{h'k'l'}) \equiv n_{2,s}^\phi
+\ee
+represent the number of photons scattered into pixels at $\phi$ along the $\{hkl\}$, $\{h'k'l'\}$ Bragg rings, resepectively. In order to resolve the angular correlations, one calculates the mean angular correlation of Bragg rings across $N_s$ exposures
+\beq \label{autocorr}
+C( \Delta) &=& \sum _s ^ {N_s} \sum_{\phi=0}^{\phi=2\pi} n_{1,s}^\phi\, n_{2,s}^{\phi + \Delta} \\
+&=& \sum_{\phi=0}^{\phi=2\pi} C\,^\phi(\Delta) 
+\eeq
+and projects [ref] this correlation onto the Ewald sphere using the relationship (\ref{project}). If there are $N_\phi$ pixels around the ring, then $\phi$ and $\Delta$ can take on values $(2\pi j/N_\phi)$ for $j = 0,1,. . . ,N_\phi-1$. 
+
+A relatively small fraction of the photons $n_s^\phi$ are correlated as discussed above, meaning additional pixels are being illuminated by the same object which scattered them. Therefore we let $n_s^\phi = c_s^\phi + u_s^\phi$ where $c_s^\phi$ are the correlated photons, and $u_s^\phi$ are the uncorrelated photons. With this, we see more clearly the terms contributing to  (\ref{autocorr}) :
+%For NPs, whether a photon contributes to $u$ or $c$ is dictated by the orientation $\omega$. %For soft matter, with lower cross section, the separation of $u$ and $c$ depends more heavily %on the flux. For instance, an object which scatters only 1 photon will not contribute to $c$.
+\beq
+C\,^\phi(\Delta) &=& \sum_s^{N_s} n_{1,s}^\phi\, n_{2,s}^{\phi + \Delta} \\
+&=& \sum_s^{N_s} \left( u_{1,s}^\phi\,+\,c_{1,s}^ \phi \right)\,\left( u_{2,s}^{ \phi+\Delta} \,+\, c_{2,s}^{\phi+\Delta} \right ) \\
+&=& \sum_s^{N_s} \left( u_{1,s}^\phi\, u_{2,s}^{\phi+\Delta} + u_{1,s}^\phi\, c_{2,s}^{\phi+\Delta} + c_{1,s}^\phi\, u_{2,s}^{\phi+\Delta}  +  c_{1,s}^\phi\, c_{2,s}^{\phi+\Delta} \right )
+\eeq
+
+The only terms which are correlated (for specific values of $\Delta$) are $c_{1,s}^\phi\,c_{2,s}^{\phi+\Delta}$. Therefore
+
+\be \label{cphi2}
+C\,^\phi(\Delta) = \bar{u_1} \bar{u_2}\, + \bar{u_1}\bar{c_2}  + \bar{u_2}\bar{c_1} + \sum_s^{N_s}c_{1,s}^\phi c_{2,s}^{\phi + \Delta} 
+\ee
+
+where $\bar{u}$/$\bar{c}$ represent the average number of uncorrelated/correlated photons scattered into the Bragg ring, respectively. These values are isotropic in the azimuthal component, only varying with scattering angle. For gold NPs, we expect (\ref{cphi2}) to show strong correlations only at angles 
+
+\be
+\Delta_{hkl,h'k'l'} = \arccos\left [  \frac{ \cos(\psi_{hkl,h'k'l'}) - \sin(\theta_{hkl})\sin(\theta_{h'k'l'} ) }{ \cos(\theta_{hkl})\cos(\theta_{h'k'l'} ) } \right ] 
+\ee
+
+corresponding to the inter-planar angles between FCC planes.
+
+In a typical exposure, most NPs will not scatter into the detector, and the ones that do will not be oriented such that they scatter into multiple detectable directions. Therefore, the average exposure is comprised of a large fraction of randomly scattered photons (owing to the orientation randomness in  a solution). As such, the signal-to-noise is much less than unity for a single exposure, and scales as the square root of the number of averaged exposures, $N_s$ [12]. We consider an exposure to be a snapshot, meaning the NPs should not be moving significantly throughout the exposure duration. This is accomplished automatically with the femtosecond timescale pulses of the SACLA facility [13].  CXS can also be conducted at synchrotron radiation facilities, provided  that the sample is prepared accordingly, and that it is cooled during exposure [14,15]. 
 
 %%%%%%%%%
 %% THEORY %%
 %%%%%%%%%
 \section{Theory}
-Each gold NP has a well-defined face-centered-cubic (FCC) lattice structure. For simplicity, we will only discuss correlations arising from the $\{111\}$ family of planes. There are 4 distinct $\{111\}$ planes: $111$,$11\bar 1$,$\bar 1 1\bar 1$,$1\bar 1 \bar 1$, and the mirror-symmetric planes, $\bar 1\bar 1\bar 1$,$\bar 1\bar 1 1$,$1 \bar 11$,$\bar 1 1 1$.  These planes scatter photons into a Bragg ring of constant magnitude $q_{111} = ( 2\pi ) / ( d_{111} )$ where $d_{111}$ is the interplanar spacing.  Let $\bm Q_{111} = \{\bm q_{111}, \bm q_{11\bar 1},\bm q_{\bar 1 1\bar 1},\bm q_{1\bar 1 \bar 1},\bm q_{\bar 1\bar 1\bar 1},\bm q_{\bar 1\bar 1 1},\bm q_{1 \bar 11},\bm q_{\bar 1 1 1}\}$ be the set of $\{111\}$ Bragg vectors. One can determine analytically which angles $\psi$ give rise to intensity correlations by evaluating (\ref{cpsi}) $\forall \, \bm q_1, \bm q_2\ne \bm q_1 \in \bm Q_{111}$. Note that for mirror-symmetric Bragg vectors, e.g. $\bm q_{111}$ and $\bm q_{\bar 1\bar 1\bar 1}$,  $\psi = 180^o$, which is not measurable using conventional flat detectors. In general, scattered photons are recorded on a planar detector, assumed perpendicular to the incoming x-rays. On such a detector, the angle $\psi$ is related to the azimuthal degree of separation $\Delta$ between 2 pixels on the $\{111\}$ Bragg ring via the formula
-
-\be \label{project}
-\cos(\psi) = \cos( \Delta )\cos^2( \theta_{111}) + \sin^2(\theta_{111})
-\ee
-
-where $\theta_{111}$ is the scattering angle of $\{111\}$ scattered photons at wavelength $\lambda$, defined by
+Each gold NP has a well-defined face-centered-cubic (FCC) lattice structure. For simplicity, we will only discuss correlations arising from the $\{111\}$ family of planes. There are 4 distinct $\{111\}$ planes: $111$,$11\bar 1$,$\bar 1 1\bar 1$,$1\bar 1 \bar 1$, and the mirror-symmetric planes, $\bar 1\bar 1\bar 1$,$\bar 1\bar 1 1$,$1 \bar 11$,$\bar 1 1 1$.  These planes scatter photons into a Bragg ring of constant magnitude $q_{111} = ( 2\pi ) / ( d_{111} )$ where $d_{111}$ is the interplanar spacing.  Let 
 
 \be
-\sin (\theta_{111})   = \frac{ \lambda  }{ 4\pi } \, q_{111}
+\bm Q_{111} = \{\bm q_{111}, \bm q_{11\bar 1},\bm q_{\bar 1 1\bar 1},\bm q_{1\bar 1 \bar 1},\bm q_{\bar 1\bar 1\bar 1},\bm q_{\bar 1\bar 1 1},\bm q_{1 \bar 11},\bm q_{\bar 1 1 1}\}
 \ee
 
-Note, the maximum angle $\psi$ that one can detect $\{111\}$ correlations is measured in pixels whose azimuthal separation is $\Delta_{max}=180^o$, hence
+ be the set of $\{111\}$ Bragg vectors. If we let 
 
-\be \label{psimax}
-\cos(\psi_{max}) = - \cos(2\theta_{111})
+\be
+F( \bm q_1, \bm q_2) =  (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 ) = \cos( \psi )
 \ee
 
-With this in mind, it is easily shown that by measuring scattering from defect-free gold NPs (modeled as bulk FCC domains with spherical boundaries) on a planar detector, one should only expect correlations to arise at values $\cos(\psi) = \pm (1/3)$. For example, 
+then we can determine analytically where (\ref{cphi2}) should show signal by creating the set
 
-\be \label{g1}
-\frac{\bm q_{111} \cdot \bm q_{11\bar{1}}}{(q_{111})^2}  = \frac{1}{3}
-\ee
+\be \label{psiset}
+\bm \Psi_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, \bm q_1, \bm q_2 \ne \bm q_1 \in \bm Q_{111}\, ,\,  F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
+\ee 
 
-and
+where we made use of (\ref{psimax}). For example, mirror-symmetric Bragg vectors, e.g. $\bm q_{111}$ and $\bm q_{\bar 1\bar 1\bar 1}$, are not included in the set  (\ref{psiset}), for $F(\bm q, -\bm q) = -1$ which is not measurable using conventional flat detectors. Rigorously,
 
-\be \label {g2}
-\frac{\bm q_{111} \cdot \bm q_{\bar{1}\bar{1}1}}{(q_{111})^2} = -\frac{1}{3}
-\ee
+\be
+\bm \Psi_{111} = \{ x_0, x_1, ... x_9, -x_0, -x_1, ... -x_9 \}
+\ee 
 
-(Figure \ref{fig:contrast}). Note that these are supplementary angles, which is a direct consequence of Friedel symmetry [11] between $\bm q_{11\bar{1}}$ and $\bm q_{\bar{1}\bar{1}1}$. All other combinations of $\bm q_1, \bm q_2 \ne \bm q_1 \in \bm Q_{111}$ will give give either  $\cos(\psi) = \pm (1/3)$, or $\cos(\psi) = -1$ (which corresponded to an un-measurable correlation). 
+where $x_i = 1/3\,\,\, (0 \le i \le 9 )$, provided that $ -1/3 \, \ge \, - \cos (2\theta_{111}) $ for the experiment (Figure \ref{fig:contrast} a,g). 
 
-However, it is known that smaller FCC NPs are not single domain FCC. Instead, they tend to form complicated twinning structures composed of many tetrahedral sub-units [ref]. The reciprocal space of these NPs is more complex than that of bulk FCC NPs, but this complexity is hidden in standard powder diffraction images because the twins all scatter into the same Bragg ring. CXS, however, is sensitive to twinned NPs. Consider the following simple model for tetrahedral nearest-neighbor FCC twins (Fig 1c). The twins (twin$_A$ and twin$_B$) have the same internal lattice structure, however one is rotated relative to the other in a way that preserves a common crystallographic direction. As a typical example, consider twin$_A$ to be related to twin$_B$ via a rotation of $180^{o}$ about the $(111)$ direction of twin$_A$, given by the matrix
+Keep in mind that this analysis assumes that each gold NP is a single FCC domain. It is well known that smaller FCC NPs are not single domain crystals. Instead, they tend to form complicated twinning structures composed of many tetrahedral sub-units [ref]. The reciprocal space of these structures is more complex than that of a single domain NP, but this complexity is hidden in standard powder diffraction images; the twins all scatter into the same Bragg rings. CXS, however, is sensitive to twinned NPs. Consider the following simple model for two FCC tetrahedons joined by a twinning plane. Let each face of the tetrahedrons be a $\{111\}$ plane. When joined, the tetrahedrons will have 1 plane in common, referred to as the twinning plane. The twins atomic coordinates are related to one another by a reflection about this plane. We refer to this twinned structure as a nearest-neighbor twin (NNT). Larger structures, e.g. decahedrons and icosahedrons, can be assembled with NNTs (Figure \ref{fig:contrast}c). We call the twins "twin$_A$" and "twin$_B$".  In our model, twin$_A$ is oriented relative to twin$_B$ via a rotation of $\pi$ about its $(111)$ direction. This operation is given by the matrix
 
 \be \label{twinmat}
-\mathbf{T} = \begin{bmatrix}
+\mathbf T = \begin{bmatrix}
        \frac{-1}{3} & \frac{2}{3} & \frac{2}{3}           \\[0.3em]
        \frac{2}{3} & \frac{\matminus 1}{3}           & \frac{2}{3} \\[0.3em]
        \frac{2}{3}           & \frac{2}{3} & \frac{-1}{3}
      \end{bmatrix}
 \ee
 
-For the twinned structure, we have a new set of Bragg vectors which can give rise to correlations. Let us define the set of nearest neighbor twin Bragg vectors as 
-\be
-\bm Q^{A,B}_{111} = \{\bm q_{111}, \bm q_{11\bar 1},\bm q_{\bar 1 1\bar 1},\bm q_{1\bar 1 \bar 1},\bm q_{\bar 1\bar 1\bar 1},\bm q_{\bar 1\bar 1 1},\bm q_{1 \bar 11},\bm q_{\bar 1 1 1}\, ,\bm q^T_{111}, \bm q^T_{11\bar 1},\bm q^T_{\bar 1 1\bar 1},\bm q^T_{1\bar 1 \bar 1},\bm q^T_{\bar 1\bar 1\bar 1},\bm q^T_{\bar 1\bar 1 1},\bm q^T_{1 \bar 11},\bm q^T_{\bar 1 1 1}\ \}
-\ee
-
-where $\bm q^T$ is used to represent the operation $\bm T \cdot \bm q$. We can use this matrix to show how correlations will arise due to inter-twin scattering events (where each twin scatters into separate directions). Again we can evaluate (\ref{cpsi}) for all $\bm q_1, \bm q_2 \ne \bm q_1 \in \bm Q^{A,B}_{111}$  to see which angles $\psi$ should give rise to correaltions, e.g.
+Photons can scatter from each twin and be correlated on a detector. We refer to these correlations as inter-twin correlations. Let us define the set of Bragg vectors for the NNT model as 
 
 \be
-\frac{ \bm q_{A,\bar{1}\bar{1}1} \cdot \mathbf T \cdot \bm q_{B,1\bar{1}1}} {{q_{\bar 1 \bar 1 1} q_{1\bar{1}1} }} \,=\, \frac { ( −1,-1,1 ) \cdot \mathbf T \cdot ( 1,-1,1 ) } {3} \,=\, \frac{5}{9}
+\bm Q^{A,B}_{111}\,\, =\,\, \bm Q_{111} \, \cup \, \{  \mathbf T  \cdot \bm q \, \big |\, \bm q \in \bm Q_{111} \}
 \ee
 
-and similary
+Again we predict where NNTs will give correlations by forming the set
 
-\be
-\frac{ \bm q_{A,11 \bar{1}} \cdot \bm T \cdot \bm q_{B,\bar{1}\bar{1}1}} { { q_{11\bar 1}  q_{ \bar 1 \bar 1 1} } } \,=\, \frac{7}{9}
+\be \label{psisetab}
+\bm \Psi^{A,B}_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, \bm q_1, \bm q_2 \ne \bm q_1 \in \bm Q^{A,B}_{111}\, ,\,  F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
 \ee
 
-It is a simple matter to show that correlations will only arise at $\cos (\psi) = \pm(1/3),\, \pm (5/9),\,  \pm (7/9)$ (Figure \ref{fig:contrast}) for NPs which consist of two tetrahedral twinned subunits according to the simple model described above.
+For experiments with sufficiently large $2\theta_{111}$, (\ref{psisetab}) will contain only values $\pm (1/3), \pm (5/9), \pm(7/9)$ (Figure \ref{fig:contrast}h). 
 
-Depending on the growth process, gold NPs have been observed to grow into many complicated twinned shapes, referred to as multiply-twinned partilcles (MTPs). In an MTP, there are additional correlations which can arise due to next-nearest-neighbor twins and so-forth, but the magnitude of such correlations is diminishing, as there are always more nearest-neighbor twins (and still a lot of signal due to intra-twin double Bragg scattering). We will now briefly present an argument supporting the precision of CXS. MTPs are commonly observed as decahedrons or icosahedrons. As it turns out, a decahedron cannot be comprised of FCC tetrahedrons and still be space-filling, the model simply won't work. We know from electron microscopy that the tetrahedral sub-units prefer to remain space-filling, and in order to form the MTP, dislocations arise [ref]. It was proposed, however, that the FCC lattice of each subunit could instead be stretched in order that the decahedron be completely space filling, and that such a change might not be detectable with standard diffractometers. CXS however, is sensitive to such small changes in the lattice, despite the overall mearurement being done on a solution.
+Depending on the growth process, gold NPs have been observed to grow into many complicated twinned shapes, referred to as multiply-twinned partilcles (MTPs). In an MTP, there are additional correlations which can arise due to next-nearest-neighbor twins and so-forth, but the magnitude of such correlations is diminishing, as there are always more nearest-neighbor twins. 
+
+%We can use this matrix to show how correlations will arise due to inter-twin scattering events (where each twin scatters into separate directions). Again we can %evaluate () for all $\bm q_1, \bm q_2 \ne \bm q_1 \in \bm Q^{A,B}_{111}$  to see which angles $\psi$ should give rise to correaltions, e.g.
+
+%\be
+%\frac{ \bm q_{A,\bar{1}\bar{1}1} \cdot \mathbf T \cdot \bm q_{B,1\bar{1}1}} {{q_{\bar 1 \bar 1 1} q_{1\bar{1}1} }} \,=\, \frac { ( -1,-1,1 ) \cdot \mathbf T %\cdot ( 1,-1,1 ) } {3} \,=\, \frac{5}{9}
+%\ee
+
+%and similary
+
+%\be
+%\frac{ \bm q_{A,11 \bar{1}} \cdot \mathbf T \cdot \bm q_{B,\bar{1}\bar{1}1}} { { q_{11\bar 1}  q_{ \bar 1 \bar 1 1} } } \,=\, \frac{7}{9}
+%\ee
+
+%It is a simple matter to show that correlations will only arise at $\cos (\psi) = $ for NPs which consist of two tetrahedral twinned subunits according to the simple model described above.
+%%%
+
+
+%We will now briefly present an argument supporting the precision of CXS. MTPs are commonly observed as decahedrons or icosahedrons. As it turns out, a decahedron cannot be comprised of FCC tetrahedrons and still be space-filling, the model simply won't work. We know from electron microscopy that the tetrahedral sub-units prefer to remain space-filling, and in order to form the MTP, dislocations arise [ref]. It was proposed, however, that the FCC lattice of each subunit could instead be stretched in order that the decahedron be completely space filling, and that such a change might not be detectable with standard diffractometers. CXS however, is sensitive to such small changes in the lattice, despite the overall mearurement being done on a solution.
 
 \begin{figure}[h]
 \begin{center}
@@ -191,29 +253,6 @@ Depending on the growth process, gold NPs have been observed to grow into many c
 \caption{Separating twinned particles from roughly spherical particles using CXS. \textbf{a)} A spherical face-centered-cubic NP. It is a lattice with a spherical boundary. Highlighted in pink is a tetrahedral region, whose faces are (111) planes. \textbf{b)} Bragg vectors arising from the (111) planes in the spherical NP. There are 4 (111) directions giving rise to 4 Bragg vectors. (the $180^o$ symmetric planes are shown in dashed lines). c) an icosahedral twinned particles. Highlighted are two nearest-neighbor tetrahedral regions, each akin to the one in \textbf{a)}. \textbf{d)} The Bragg vectors arising from these two neighboring twins shown in \textbf{c)}. There are more directions for photons to go, leading to additional correlation angles $\cos(\psi)$. There are correlations between next-nearest neighbor twins, but these fall off rapidly in magnitude, as there are more nearest neighbor twins. \textbf{e),f)} Powder x-ray diffraction measurements of spherical and icosahedral twinned NPs, respectively. The powder scattering signals are indistinguishable.  \textbf{g), h)} Simulations of $C(q_{111},q_{111},\cos(\psi) )$ for spherical and icosahedral twinned NPs. Bulk FCC will only produce peaks at $\pm (1/3)$ whereas nearest-neighbor twins produce peaks at $\pm (1/3), \pm (5/9), \pm (7/9)$. The height of the peaks are related to the different combinations of Bragg vectors. The two signals are clearly distinguishable. Artwork courtesy of Gregory M.~Stewart (SLAC).}
 \label{fig:contrast}
 \end{figure}
-
-The azimuthal position of each scattered photon (here called $\phi$, in the plane of the detector) depends on the orientation of the NP which scattered it. For a solution of NPs, many photons will scatter into all angles $\phi$, forming Bragg rings on the detector. We let $n_s^\phi (q_{111}) \equiv n_s^\phi$ represent the number of photons scattered into a pixel along the $\{111\}$ Bragg ring during an exposure denoted by $s$. In order to realize the correlations e.g. (\ref{g1}, \ref{g2}), one calculates the mean auto-correlation of $\{111\}$ Bragg rings across exposures
-\beq \label{autocorr}
-C( \Delta) &=& \sum _s ^ {N_s} \sum_{\phi=0}^{\phi=2\pi} n_s^\phi\, n_s^{\phi + \Delta} \\
-&=& \sum_{\phi=0}^{\phi=2\pi} C\,^\phi(\Delta) 
-\eeq
-and projects [ref] this correlation onto the Ewald sphere using the relationship (\ref{project}). If there are $N_\phi$ pixels around the ring, then $\phi$ and $\Delta$ can take on values $(2\pi j/N_\phi)$ for $j = 0,1,. . . ,N_\phi-1$. 
-
-A relatively small fraction of the photons $n_s^\phi$ are correlated as discussed above, meaning additional pixels are being illuminated by the same object which scattered them. Therefore we let $n_s^\phi = c_s^\phi + u_s^\phi$ where $c_s^\phi$ are the correlated photons, and $u_s^\phi$ are the uncorrelated photons. With this, we see more clearly the terms contributing to  (\ref{autocorr}) :
-%For NPs, whether a photon contributes to $u$ or $c$ is dictated by the orientation $\omega$. %For soft matter, with lower cross section, the separation of $u$ and $c$ depends more heavily %on the flux. For instance, an object which scatters only 1 photon will not contribute to $c$.
-\beq
-C\,^\phi(\Delta) &=& \sum_s^{N_s} n_s^\phi\, n_s^{\phi + \Delta} \\
-&=& \sum_s^{N_s} \left( u_s^\phi\,+\,c_s^ \phi \right)\,\left( u_s^{ \phi+\Delta} \,+\, c_s^{\phi+\Delta} \right ) \\
-&=& \sum_s^{N_s} \left( u_s^\phi\, u_s^{\phi+\Delta} + u_s^\phi\, c_s^{\phi+\Delta} + c_s^\phi\, u_s^{\phi+\Delta}  +  c_s^\phi\, c_s^{\phi+\Delta} \right )
-\eeq
-
-The only terms which are correlated (for specific values of $\Delta$) are $c_s^\phi\,c_s^{\phi+\Delta}$. Therefore
-
-\be \label{cphi2}
-C\,^\phi(\Delta) = \bar{u}\,^2 + 2\,\bar{u}\bar{c} + \sum_s^{N_s}c_s^\phi c_s^{\phi + \Delta} 
-\ee
-
-where $\bar{u}$/$\bar{c}$ represent the average number of uncorrelated/correlated photons scattered into the $q_{111}$ Bragg ring, respectively. These values are isotropic in the azimuthal component, only varying with scattering angle. 
 
 
 \section{The Experiment}
