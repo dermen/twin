@@ -142,16 +142,16 @@ and
 n_s^\phi (q_{h'k'l'}) \equiv n_{2,s}^\phi
 \ee
 represent the number of photons scattered into pixels at $\phi$ along the $\{hkl\}$, $\{h'k'l'\}$ Bragg rings, resepectively. In order to resolve the angular correlations, one calculates the mean angular correlation of Bragg rings across $N_s$ exposures
-\beq \label{autocorr}
-C( \Delta) &=& \sum _s ^ {N_s} \sum_{\phi=0}^{\phi=2\pi} n_{1,s}^\phi\, n_{2,s}^{\phi + \Delta} \\
-&=& \sum_{\phi=0}^{\phi=2\pi} C\,^\phi(\Delta) 
+\beq \label{corr}
+C_{1,2}( \Delta) &=& \sum _s ^ {N_s} \sum_{\phi=0}^{\phi=2\pi} n_{1,s}^\phi\, n_{2,s}^{\phi + \Delta} \\
+&=& \sum_{\phi=0}^{\phi=2\pi} C_{1,2}^\phi(\Delta) 
 \eeq
 and projects [ref] this correlation onto the Ewald sphere using the relationship (\ref{project}). If there are $N_\phi$ pixels around the ring, then $\phi$ and $\Delta$ can take on values $(2\pi j/N_\phi)$ for $j = 0,1,. . . ,N_\phi-1$. 
 
-A relatively small fraction of the photons $n_s^\phi$ are correlated as discussed above, meaning additional pixels are being illuminated by the same object which scattered them. Therefore we let $n_s^\phi = c_s^\phi + u_s^\phi$ where $c_s^\phi$ are the correlated photons, and $u_s^\phi$ are the uncorrelated photons. With this, we see more clearly the terms contributing to  (\ref{autocorr}) :
+A relatively small fraction of the photons $n_s^\phi$ are correlated as discussed above, meaning additional pixels are being illuminated by the same object which scattered them. Therefore we let $n_s^\phi = c_s^\phi + u_s^\phi$ where $c_s^\phi$ are the correlated photons, and $u_s^\phi$ are the uncorrelated photons. With this, we see more clearly the terms contributing to  (\ref{corr}) :
 %For NPs, whether a photon contributes to $u$ or $c$ is dictated by the orientation $\omega$. %For soft matter, with lower cross section, the separation of $u$ and $c$ depends more heavily %on the flux. For instance, an object which scatters only 1 photon will not contribute to $c$.
 \beq
-C\,^\phi(\Delta) &=& \sum_s^{N_s} n_{1,s}^\phi\, n_{2,s}^{\phi + \Delta} \\
+C_{1,2}^\phi(\Delta) &=& \sum_s^{N_s} n_{1,s}^\phi\, n_{2,s}^{\phi + \Delta} \\
 &=& \sum_s^{N_s} \left( u_{1,s}^\phi\,+\,c_{1,s}^ \phi \right)\,\left( u_{2,s}^{ \phi+\Delta} \,+\, c_{2,s}^{\phi+\Delta} \right ) \\
 &=& \sum_s^{N_s} \left( u_{1,s}^\phi\, u_{2,s}^{\phi+\Delta} + u_{1,s}^\phi\, c_{2,s}^{\phi+\Delta} + c_{1,s}^\phi\, u_{2,s}^{\phi+\Delta}  +  c_{1,s}^\phi\, c_{2,s}^{\phi+\Delta} \right )
 \eeq
@@ -159,10 +159,22 @@ C\,^\phi(\Delta) &=& \sum_s^{N_s} n_{1,s}^\phi\, n_{2,s}^{\phi + \Delta} \\
 The only terms which are correlated (for specific values of $\Delta$) are $c_{1,s}^\phi\,c_{2,s}^{\phi+\Delta}$. Therefore
 
 \be \label{cphi2}
-C\,^\phi(\Delta) = \bar{u_1} \bar{u_2}\, + \bar{u_1}\bar{c_2}  + \bar{u_2}\bar{c_1} + \sum_s^{N_s}c_{1,s}^\phi c_{2,s}^{\phi + \Delta} 
+C_{1,2}^\phi(\Delta) = \bar{u_1} \bar{u_2}\, + \bar{u_1}\bar{c_2}  + \bar{u_2}\bar{c_1} + \sum_s^{N_s}c_{1,s}^\phi c_{2,s}^{\phi + \Delta}
 \ee
 
-where $\bar{u}$/$\bar{c}$ represent the average number of uncorrelated/correlated photons scattered into the Bragg ring, respectively. These values are isotropic in the azimuthal component, only varying with scattering angle. For gold NPs, we expect (\ref{cphi2}) to show strong correlations only at angles 
+where $\bar{u}$/$\bar{c}$ represent the average number of uncorrelated/correlated photons scattered into the Bragg ring, respectively. These values are isotropic in the azimuthal component, only varying with scattering angle. Therefore,
+
+\be \label{corr2}
+C_{1,2}(\Delta) = \bar C +  \sum_s^{N_s} \sum_{\phi=0}^{\phi=2\pi} c_{1,s}^\phi c_{2,s}^{\phi + \Delta}
+\ee
+
+where 
+
+\be
+\bar C = N_\phi \,( \bar{u_1} \bar{u_2}\, + \bar{u_1}\bar{c_2}  + \bar{u_2}\bar{c_1} )
+\ee
+
+is a constant background term. For gold NPs, we expect (\ref{corr}) to show strong correlations only at angles 
 
 \be
 \Delta_{hkl,h'k'l'} = \arccos\left [  \frac{ \cos(\psi_{hkl,h'k'l'}) - \sin(\theta_{hkl})\sin(\theta_{h'k'l'} ) }{ \cos(\theta_{hkl})\cos(\theta_{h'k'l'} ) } \right ] 
@@ -188,21 +200,21 @@ Each gold NP has a well-defined face-centered-cubic (FCC) lattice structure. For
 F( \bm q_1, \bm q_2) =  (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 ) = \cos( \psi )
 \ee
 
-then we can determine analytically where (\ref{cphi2}) should show signal by creating the set
+then we can determine analytically where (\ref{corr}) should show signal by creating the set
 
 \be \label{psiset}
-\bm \Psi_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, \bm q_1, \bm q_2 \ne \bm q_1 \in \bm Q_{111}\, ,\,  F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
+\bm \Psi_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, (\bm q_1, \bm q_2 \ne \bm q_1) \in \bm Q_{111}\, ,\,  F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
 \ee 
 
 where we made use of (\ref{psimax}). For example, mirror-symmetric Bragg vectors, e.g. $\bm q_{111}$ and $\bm q_{\bar 1\bar 1\bar 1}$, are not included in the set  (\ref{psiset}), for $F(\bm q, -\bm q) = -1$ which is not measurable using conventional flat detectors. Rigorously,
 
 \be
-\bm \Psi_{111} = \{ x_1, x_1, ... x_12, -x_1, -x_1, ... -x_12 \}
+\bm \Psi_{111} = \{ x_1, x_1, ... x_{12}, -x_1, -x_1, ... -x_{12} \}
 \ee 
 
 where $x_i = 1/3\,\,\, (1 \le i \le 12 )$, provided that $ -1/3 \, \ge \, - \cos (2\theta_{111}) $ for the experiment (Figure \ref{fig:contrast} a,g). 
 
-Keep in mind that this analysis assumes that each gold NP is a single FCC domain. It is well known that smaller FCC NPs are not single domain crystals. Instead, they tend to form complicated twinning structures composed of many tetrahedral sub-units [ref]. The reciprocal space of these structures is more complex than that of a single domain NP, but this complexity is hidden in standard powder diffraction images; the twins all scatter into the same Bragg rings. CXS, however, is sensitive to twinned NPs. Consider the following simple model for two FCC tetrahedons joined by a twinning plane. Let each face of the tetrahedrons be a $\{111\}$ plane. When joined, the tetrahedrons will have 1 plane in common, referred to as the twinning plane. The twins atomic coordinates are related to one another by a reflection about this plane. We refer to this twinned structure as a nearest-neighbor twin (NNT). Larger structures, e.g. decahedrons and icosahedrons, can be assembled with NNTs (Figure \ref{fig:contrast}c). We call the twins "twin$_A$" and "twin$_B$".  In our model, twin$_A$ is oriented relative to twin$_B$ via a rotation of $\pi$ about its $(111)$ direction. This operation is given by the matrix
+Keep in mind that this analysis assumes that each gold NP is a single FCC domain. It is well known that smaller FCC NPs are not single crystal domains. Instead, they tend to form complicated twinning structures composed of many tetrahedral sub-units [ref]. The reciprocal space of these structures is more complex than that of a single domain NP, but this complexity is hidden in standard powder diffraction images; the twins all scatter into the same Bragg rings. CXS, however, is sensitive to twinned NPs. Consider the following simple model for two FCC tetrahedons joined by a twinning plane. Let each face of the tetrahedrons be a $\{111\}$ plane. When joined, the tetrahedrons will have 1 plane in common, referred to as the twinning plane. The twins atomic coordinates are related to one another by a reflection about this plane. We refer to this twinned structure as a nearest-neighbor twin (NNT). Larger structures, e.g. decahedrons and icosahedrons, can be assembled with NNTs (Figure \ref{fig:contrast}c). We call the twins "twin$_A$" and "twin$_B$".  In our model, twin$_A$ is oriented relative to twin$_B$ via a rotation of $\pi$ about its $(111)$ direction. This operation is given by the matrix
 
 \be \label{twinmat}
 \mathbf T = \begin{bmatrix}
@@ -218,13 +230,23 @@ Photons can scatter from each twin and be correlated on a detector. We refer to 
 \bm Q^{A,B}_{111}\,\, =\,\, \bm Q_{111} \, \cup \, \{  \mathbf T  \cdot \bm q \, \big |\, \bm q \in \bm Q_{111} \}
 \ee
 
-Again we predict where NNTs will give correlations by forming the set
+We can now predict where NNTs will give correlations, keeping in mind that $F( \bm q_{111}, \mathbf T \cdot \bm q_{111}) = F( \bm q_{111}, \bm q_{111}) = 1$, which represents a zero-point correlation and gives us no information on the structure. Therefore, we restrict $\psi > 0$ in this new set of angles: 
 
 \be \label{psisetab}
-\bm \Psi^{A,B}_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, \bm q_1, \bm q_2 \ne \bm q_1 \in \bm Q^{A,B}_{111}\, ,\,  F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
+\bm \Psi^{A,B}_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, (\bm q_1, \bm q_2 \ne \bm q_1) \in \bm Q^{A,B}_{111}\, ,\, 1 > F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
 \ee
 
-For experiments with sufficiently large $2\theta_{111}$, (\ref{psisetab}) will contain only values $\pm (1/3), \pm (5/9), \pm(7/9)$ (Figure \ref{fig:contrast}h). 
+For experiments with sufficiently large $2\theta_{111}$, (\ref{psisetab}) will contain only values $\pm (1/3), \pm (5/9), \pm(7/9)$ (Figure \ref{fig:contrast}h).  Rigorously, 
+
+\beq
+\bm \Psi^{A,B}_{111} &=& \{\, x_1, ... x_{36}, -x_1, ... -x_{36},  \\
+&&\,\,\,\, y_1, ... y_{12}, -y_1, ... -y_{12}, \\
+&& \,\,\,\, z_1, ... z_{12}, -z_6, ... -z_6 \, \}
+\eeq
+
+where $x_i = 1/3\,\,\, (1 \le i \le 36 )$, $y_i = 5/9\,\,\, (1 \le i \le 12 )$, $z_i = 7/9\,\,\, (1 \le i \le 6 )$.  We assume that $ -7/9 \, \ge \, - \cos (2\theta_{111}) $ during the experiment. We expect that the magnitude of the correlations should agree with the values in this set. This is evident in our simulations (Figure \ref{fig:peak}).
+
+Note we reached these conclusions by considering the atomic structure of a single NP; the information content of CXS depends solely on the scattering factor of the individual particle in solution. For the case of NPs, the scattering factor is a relatively simple function in reciprocal space, however CXS analysis is easily extended to soft matter experiments [ref].
 
 Depending on the growth process, gold NPs have been observed to grow into many complicated twinned shapes, referred to as multiply-twinned partilcles (MTPs). In an MTP, there are additional correlations which can arise due to next-nearest-neighbor twins and so-forth, but the magnitude of such correlations is diminishing, as there are always more nearest-neighbor twins. 
 
@@ -250,55 +272,87 @@ Depending on the growth process, gold NPs have been observed to grow into many c
 \begin{center}
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./8871A01_v04_update.png}
 \end{center}
-\caption{Separating twinned particles from roughly spherical particles using CXS. \textbf{a)} A spherical face-centered-cubic NP. It is a lattice with a spherical boundary. Highlighted in pink is a tetrahedral region, whose faces are (111) planes. \textbf{b)} Bragg vectors arising from the (111) planes in the spherical NP. There are 4 (111) directions giving rise to 4 Bragg vectors. (the $180^o$ symmetric planes are shown in dashed lines). c) an icosahedral twinned particles. Highlighted are two nearest-neighbor tetrahedral regions, each akin to the one in \textbf{a)}. \textbf{d)} The Bragg vectors arising from these two neighboring twins shown in \textbf{c)}. There are more directions for photons to go, leading to additional correlation angles $\cos(\psi)$. There are correlations between next-nearest neighbor twins, but these fall off rapidly in magnitude, as there are more nearest neighbor twins. \textbf{e),f)} Powder x-ray diffraction measurements of spherical and icosahedral twinned NPs, respectively. The powder scattering signals are indistinguishable.  \textbf{g), h)} Simulations of $C(q_{111},q_{111},\cos(\psi) )$ for spherical and icosahedral twinned NPs. Bulk FCC will only produce peaks at $\pm (1/3)$ whereas nearest-neighbor twins produce peaks at $\pm (1/3), \pm (5/9), \pm (7/9)$. The height of the peaks are related to the different combinations of Bragg vectors. The two signals are clearly distinguishable. Artwork courtesy of Gregory M.~Stewart (SLAC).}
+\caption{Identifying twinned particles VS roughly spherical particles using CXS. \textbf{a)} A spherical face-centered-cubic NP. It is a lattice with a spherical boundary. Highlighted in pink is a tetrahedral region, whose faces are (111) planes. \textbf{b)} Bragg vectors arising from the (111) planes in the spherical NP. There are 4 (111) directions giving rise to 4 Bragg vectors. (the $180^o$ symmetric planes are shown in dashed lines). c) an icosahedral twinned particles. Highlighted are two nearest-neighbor tetrahedral regions, each akin to the one in \textbf{a)}. \textbf{d)} The Bragg vectors arising from these two neighboring twins shown in \textbf{c)}. There are more directions for photons to go, leading to additional correlation angles $\cos(\psi)$. There are correlations between next-nearest neighbor twins, but these fall off rapidly in magnitude, as there are more nearest neighbor twins. \textbf{e),f)} Powder x-ray diffraction measurements of spherical and icosahedral twinned NPs, respectively. The powder scattering signals are indistinguishable.  \textbf{g), h)} Simulations of $C(q_{111},q_{111},\cos(\psi) )$ for spherical and icosahedral twinned NPs. Bulk FCC will only produce peaks at $\pm (1/3)$ whereas nearest-neighbor twins produce peaks at $\pm (1/3), \pm (5/9), \pm (7/9)$. The height of the peaks are related to the different combinations of Bragg vectors. The two signals are clearly distinguishable. Artwork courtesy of Gregory M.~Stewart (SLAC).}
 \label{fig:contrast}
 \end{figure}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./cxs_peak.png}
+\end{center}
+\caption{An atomic CXS simulation of (\ref{corr}) for gold NNT particles that is normalized to show the peak heights seem to agree with the predictions (\ref{psisetab}).}
+\label{fig:peak}
+\end{figure}
+
 
 
 \section{The Experiment}
 Here we will report on the successful measurement of CXS for gold NPs at the SACLA beam facility in Japan. 60 nanometer Gold NPs were purchased from Nanopartz Inc. [ref] and suspended in LCP (lipid cubic phase, [ref])at a concentration of 40 mg/mL. The viscous solution was injected into the beam as a constant stream using a  hamilton 7780 syringe needle with inner diameter 130 $\mu m$.
 
-The SACLA beam was focused down to a roughly $5 \times 5 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. The femto-second pulses were measured using an MPCCD 8-panel detector [ref]. Gain calibrations were provided by SACLA [ref], and dark current measurements (detector readouts with the shutter closed) were performed every $5\times 10^3$ exposures and used to adjust for electronic noise common to CCD detectors. With this setup we acquired $1.6\times 10^5$ exposures of gold NPs. 
+The SACLA beam was focused down to a roughly $1.5 \times 2.4 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. The femto-second pulses were measured using an MPCCD 8-panel detector [ref]. Gain calibrations were provided by SACLA [ref], and dark current measurements (detector readouts with the shutter closed) were performed every $5\times 10^3$ exposures and used to adjust for electronic noise common to CCD detectors. With this setup we acquired $1.6\times 10^5$ exposures of gold NPs.  For the analysis we will be working with the $\{111\}$ Bragg ring, therefore we let $C_{1,2}(\Delta) \equiv C( \Delta )$, where it is implied that $n_{1,s}^\phi = n_{2,s}^\phi = n_s^\phi(q_{111}) \equiv n_s^\phi$. 
 
-
-
-As previously reported, any artificial correlations associated with the experiment are detrimental, and can corrupt the calculation of (\ref {autocorr}). Next we describe in detail a previously proposed method [ref] for suppressing these artifacts. We model the median-normalized intensity in a pixel at $q_{111}, \phi$ of a single exposure as
-
-\be
-I_s^ \phi  = \frac{ k_s^\phi \,\left( j_s^\phi  + \,n_s^\phi  \right ) }{ M_s} 
-\ee
-
-where $M_s$ is the median pixel value on the ring,  $j_s^\phi$ is random scattered photons coming from the background (e.g. water, buffer), and $k_s^\phi$ models the non-uniformity on the detector, due to effects such as shadows and polarization. We work with normalized intensities in order to account for fluctuation in sample volume due to small instabilities in the injector system which causes more or less photons to scatter. The $k_s^\phi$ modulations make it very difficult to extract e.g. the CXS signal (\ref{autocorr}). If one were to calculate the raw correlation
+As previously reported, any artificial correlations associated with the experiment are detrimental, and can corrupt the calculation of (\ref {corr}). If one were to simply calculate the raw correlation of pixel intensities (mean subtracted to account for the background term in (\ref{corr2}))
 
 \be \label{rawCorr}
-C_{r}(\Delta) = \sum_s^{N_s} \sum_{\phi=0}^{\phi=2\pi} \left( I_s^\phi  - \left \langle {I_s} \right \rangle _\phi \right)\,\left(I_s^{\phi+\Delta}  - \left\langle {I_s}\right\rangle _\phi \right)
+C_I (\Delta) = \sum_s^{N_s} \sum_{\phi=0}^{\phi=2\pi} \left( I_s^\phi  - \left \langle {I_s} \right \rangle _\phi \right)\,\left(I_s^{\phi+\Delta}  - \left\langle {I_s}\right\rangle _\phi \right)
 \ee
 
-one would notice there is very strong artificial signal associated with the correlations between the $j_s^\phi$ and $k_s^\phi$ terms. In fact, these terms make it nearly impossible to determine the signal (\ref{autocorr}); the background terms are dominant (Figure 2). Previously we reported on a binary filter method used to extract the CXS signal, however information on CXS magnitude was lost [15]. We now discuss in detail the difference correlation method for removing artificial correlations, first discussed in [14]. In general, $k_s^\phi$ is slowly varying across exposures, compared to the time between consecutive exposures. Therefore we may record the difference between two pixel intensities as
+where 
 
-\beq
-I_s^\phi - I_{s'}^\phi &=& k^\phi\left( \frac{j_s^\phi}{M_s} - \frac{j_{s'}^\phi}{M_{s'}}  + \frac{n_s^\phi}{M_s} - \frac{n_{s'}^\phi}{M_{s'}} \right) \\
-&\approx& k^\phi \left( \frac{n_s^\phi}{M_s} - \frac{n_{s'}^\phi}{M_s'} \right ) \\
-&\equiv& I_{s,s'}^\phi
-\eeq
+\be
+I_s^\phi \, \propto \, n_s^\phi
+\ee 
 
+, then one would likely find the result to be non-sensical (Figure \ref{fig:raw_dif}a). This is because effects such as (but not limited to) beam polarization, non-uniform pixel response, sample inhomogeneity, parasitic scattering, and detector shadows can all contribute to artificial CXS signal. Next we validate a previously described method [ref] for suppressing these artifacts. In general, the experimental noise terms vary slowly in time relative to the exposure repetition rate ($30$ Hz), which motivates a previously reported method [ref] for minimizing these artifacts. Consider a variant of (\ref{rawCorr})
+
+\be \label{cdif}
+\tilde{C}_I(\Delta) = \sum _s^{N_s/2} \sum_{\phi=0}^{\phi=2\pi} I_{2s, 2s+1}^\phi\,\, I_{2s,2s+1}^{\phi + \Delta} 
+\ee
+
+where
+
+\be
+I_{s,s'}^\phi \equiv I_s^\phi - I_{s'}^\phi 
+\ee
+
+It turns out that this so-called "difference correlation" is a good measure of (\ref{corr}) that automatically minimizes the artificial correlations in each exposure, the main assumption being that shot $s$ and shot $s+1$ will have roughly the same artificial correlations (see appendix i). With this powerful method, we see that our data agree with the predicted CXS signal for gold NNT particles (Figure \ref{fig:raw_dif}b). Without the use of CXS, it would not be possible to tell whether the gold NPs were twinned using x-ray diffraction alone. Note that this signal represents that of the average NP in solution, therefore we do not expect perfect agreement with our simple model. Further, electron microscopy suggests that gold NPs are most likely MTPs, which gives reason that the signal should deviate from that of simple NNT particles.
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./raw_dif.png}
 \end{center}
-\caption{\textbf{a)} Computation of $C_r(\Delta)$ for 174k exposures of gold NP solution. Shows the strong artificial correlation signal associated with experimental noise terms. b) Computation of $\tilde{C}(\Delta)$ for 87k pairs of exposures. Without further processing, the CXS signal arising from the gold NPs in solution is clear.}
+\caption{\textbf{a)} Computation of $C_I(\Delta)$ for 174k exposures of gold NP solution. Shows the strong artificial correlation signal associated with experimental noise terms. b) Computation of $\tilde C_I(\Delta)$ for 87k pairs of exposures. Without further processing, the CXS signal arising from the gold NPs in solution is clear.}
 \label{fig:raw_dif}
 \end{figure}
 
-where we assume background fluctuations between exposures ($j_s^\phi - j_{s’}^\phi$) are much less than those of the NPs. This is a fair approximation for NPs, whose scattering cross sections are typical higher than those of the solvent. Consider a variant of (\ref{rawCorr})
 
-\beq \label{cdif}
-\tilde{C}(\Delta) &=& \sum _s^{N_s/2} \sum_{\phi=0}^{\phi=2\pi} I_{2s, 2s+1}^\phi\,\, I_{2s,2s+1}^{\phi + \Delta} \\
-&=& \sum_{\phi=0}^{\phi=2\pi}  \tilde{C}\,^\phi( \Delta)
-\eeq
+\begin{comment}
+%We model the median-normalized intensity in a pixel at $q_{111}, \phi$ of a single exposure as
 
-where
+%\be
+%I_s^ \phi  = \frac{ k_s^\phi \,\left( j_s^\phi  + \,n_s^\phi  \right ) }{ M_s} 
+%\ee
+
+%where $M_s$ is the median pixel value on the ring,  $j_s^\phi$ is random scattered photons coming from the background (e.g. water, buffer), and $k_s^\phi$ models the non-uniformity on the detector, due to effects such as shadows and polarization. We work with normalized intensities in order to account for fluctuation in sample volume due to small instabilities in the injector system which causes more or less photons to scatter. The $k_s^\phi$ modulations make it very difficult to extract e.g. the CXS signal (\ref{autocorr}). If one were to calculate the raw correlation
+
+%one would notice there is very strong artificial signal associated with the correlations between the $j_s^\phi$ and $k_s^\phi$ terms. In fact, these terms make it nearly impossible to determine the signal (\ref{autocorr}); the background terms are dominant (Figure 2). Previously we reported on a binary filter method used to extract the CXS signal, however information on CXS magnitude was lost [15]. We now discuss in detail the difference correlation method for removing artificial correlations, first discussed in [14]. In general, $k_s^\phi$ is slowly varying across exposures, compared to the time between consecutive exposures. Therefore we may record the difference between two pixel intensities as
+
+%\beq
+%I_s^\phi - I_{s'}^\phi &=& k^\phi\left( \frac{j_s^\phi}{M_s} - \frac{j_{s'}^\phi}{M_{s'}}  + \frac{n_s^\phi}{M_s} - %\frac{n_{s'}^\phi}{M_{s'}} \right) \\
+%&\approx& k^\phi \left( \frac{n_s^\phi}{M_s} - \frac{n_{s'}^\phi}{M_s'} \right ) \\
+%&\equiv& I_{s,s'}^\phi
+%\eeq
+
+
+
+%where we assume background fluctuations between exposures ($j_s^\phi - j_{s’}^\phi$) are much less than those of the NPs. This is a fair approximation for NPs, whose scattering cross sections are typical higher than those of the solvent. Consider a variant of (\ref{rawCorr})
+
+%\beq \label{cdif}
+%\tilde{C}(\Delta) &=& \sum _s^{N_s/2} \sum_{\phi=0}^{\phi=2\pi} I_{2s, 2s+1}^\phi\,\, I_{2s,2s+1}^{\phi + \Delta} \\
+%&=& \sum_{\phi=0}^{\phi=2\pi}  \tilde{C}\,^\phi( \Delta)
+%\eeq
+
+%where
 
 \beq
 \tilde{C}\,^\phi(\Delta) &=& k^\phi k^{\phi+\Delta} \sum_s^{N_s/2} \left( n_{2s}^\phi n_{2s}^{\phi+\Delta} \,+\,   n_{2s+1}^\phi n_{2s+1}^{\phi+\Delta} \,-\,  n_{2s}^\phi n_{2s+1}^{\phi+\Delta} \,-\,  n_{2s+1}^\phi\,n_{2s}^{\phi+\Delta} \right)\\
@@ -333,8 +387,6 @@ An elementary gold NP model consists of an (FCC) lattice with a spherical bounda
 
 
 These values are precisely the peak locations shown in Figure 1h and Figure 2b. Previously, when we reported on CXS of silver NPs, we only observed peaks at $\cos(\psi) = \pm (1/3)$, however their we made use of a non-linear binary filter which reduced the information content. Further, the amount of data (15k exposures) was limited due to the typically long exposure times at synchrotrons compared to those at SACLA. Prior to analyzing the SACLA dataset, we have computed (\ref{cdif}) for the SSRL dataset, and first took note of what appeared to be additional CXS peaks (Figure 3), which were not predicted by the elementary NP model (Figure 1a). This was initially puzzling, but after comparing with the SACLA gold NP dataset (Figure 3), we realized these correlations were in fact real, and were representing a more general property of small FCC NPs.
-
-\begin{comment}
 
 In order to see the power of the difference correlation, one must split $n$ as a sum of correlated photons $c$ and uncorrelated photons $u$. 
 
