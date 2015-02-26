@@ -241,10 +241,10 @@ For experiments with sufficiently large $2\theta_{111}$, (\ref{psisetab}) will c
 \beq
 \bm \Psi^{A,B}_{111} &=& \{\, x_1, ... x_{36}, -x_1, ... -x_{36},  \\
 &&\,\,\,\, y_1, ... y_{12}, -y_1, ... -y_{12}, \\
-&& \,\,\,\, z_1, ... z_{12}, -z_6, ... -z_6 \, \}
+&& \,\,\,\, z_1, ... z_6, -z_1, ... -z_6 \, \}
 \eeq
 
-where $x_i = 1/3\,\,\, (1 \le i \le 36 )$, $y_i = 5/9\,\,\, (1 \le i \le 12 )$, $z_i = 7/9\,\,\, (1 \le i \le 6 )$.  We assume that $ -7/9 \, \ge \, - \cos (2\theta_{111}) $ during the experiment. We expect that the magnitude of the correlations should agree with the values in this set. This is evident in our simulations (Figure \ref{fig:peak}).
+where $x_i = 1/3\,\,\, (1 \le i \le 36 )$, $y_i = 5/9\,\,\, (1 \le i \le 12 )$, $z_i = 7/9\,\,\, (1 \le i \le 6 )$.  We assume that $ -7/9 \, \ge \, - \cos (2\theta_{111}) $ during the experiment. We expect that the magnitude of the correlation $\ref{corr}$ should agree with the frequency of values in this set. This is evident in our simulations (Figure \ref{fig:peak}).
 
 Note we reached these conclusions by considering the atomic structure of a single NP; the information content of CXS depends solely on the scattering factor of the individual particle in solution. For the case of NPs, the scattering factor is a relatively simple function in reciprocal space, however CXS analysis is easily extended to soft matter experiments [ref].
 
@@ -280,33 +280,27 @@ Depending on the growth process, gold NPs have been observed to grow into many c
 \begin{center}
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{./cxs_peak.png}
 \end{center}
-\caption{An atomic CXS simulation of (\ref{corr}) for gold NNT particles that is normalized to show the peak heights seem to agree with the predictions (\ref{psisetab}).}
+\caption{An atomic CXS simulation of (\ref{corr}) for gold NNT particles that is normalized in order to show how the peak heights agree with the predictions (\ref{psisetab}).}
 \label{fig:peak}
 \end{figure}
 
 
 
 \section{The Experiment}
-Here we will report on the successful measurement of CXS for gold NPs at the SACLA beam facility in Japan. 60 nanometer Gold NPs were purchased from Nanopartz Inc. [ref] and suspended in LCP (lipid cubic phase, [ref])at a concentration of 40 mg/mL. The viscous solution was injected into the beam as a constant stream using a  hamilton 7780 syringe needle with inner diameter 130 $\mu m$.
+Here we will report on the successful measurement of CXS for gold NPs at the SACLA beam facility in Japan. 60 nanometer gold NPs were purchased from Nanopartz Inc. [ref] and suspended in LCP (lipid cubic phase, [ref])at a concentration of 40 mg/mL. The viscous solution was injected into the beam as a constant stream using a  hamilton 7780 syringe needle with inner diameter 130 $\mu m$.
 
 The SACLA beam was focused down to a roughly $1.5 \times 2.4 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. The femto-second pulses were measured using an MPCCD 8-panel detector [ref]. Gain calibrations were provided by SACLA [ref], and dark current measurements (detector readouts with the shutter closed) were performed every $5\times 10^3$ exposures and used to adjust for electronic noise common to CCD detectors. With this setup we acquired $1.6\times 10^5$ exposures of gold NPs.  For the analysis we will be working with the $\{111\}$ Bragg ring, therefore we let $C_{1,2}(\Delta) \equiv C( \Delta )$, where it is implied that $n_{1,s}^\phi = n_{2,s}^\phi = n_s^\phi(q_{111}) \equiv n_s^\phi$. 
 
-As previously reported, any artificial correlations associated with the experiment are detrimental, and can corrupt the calculation of (\ref {corr}). If one were to simply calculate the raw correlation of pixel intensities (mean subtracted to account for the background term in (\ref{corr2}))
+As previously reported, any artificial correlations associated with the experiment are detrimental, and can corrupt the calculation of (\ref {corr}). On a CCD, the intensity recorded in a pixel is ideally just proportional to the number of photons scattered into that pixel, i.e. $I_s^\phi \, \propto \, n_s^\phi$.  If one were to simply calculate the raw correlation of pixel intensities (mean subtracted to account for the background term in (\ref{corr2}))
 
 \be \label{rawCorr}
 C_I (\Delta) = \sum_s^{N_s} \sum_{\phi=0}^{\phi=2\pi} \left( I_s^\phi  - \left \langle {I_s} \right \rangle _\phi \right)\,\left(I_s^{\phi+\Delta}  - \left\langle {I_s}\right\rangle _\phi \right)
 \ee
 
-where 
-
-\be
-I_s^\phi \, \propto \, n_s^\phi
-\ee 
-
-, then one would likely find the result to be non-sensical (Figure \ref{fig:raw_dif}a). This is because effects such as (but not limited to) beam polarization, non-uniform pixel response, sample inhomogeneity, parasitic scattering, and detector shadows can all contribute to artificial CXS signal. Next we validate a previously described method [ref] for suppressing these artifacts. In general, the experimental noise terms vary slowly in time relative to the exposure repetition rate ($30$ Hz), which motivates a previously reported method [ref] for minimizing these artifacts. Consider a variant of (\ref{rawCorr})
+then one should hope that the answer, $C_I(\Delta) \propto C(\Delta)$. However, one would likely find the result to be non-sensical (Figure \ref{fig:raw_dif}a). This is because effects such as (but not limited to) beam polarization, non-uniform pixel response, sample inhomogeneity, parasitic scattering, and detector shadows can all contribute to artificial CXS signal. Generally, the experimental noise terms vary slowly in time relative to the exposure repetition rate ($30$ Hz), which motivates us to employ a previously reported method [ref] for minimizing these artifacts. Consider a variant of (\ref{rawCorr})
 
 \be \label{cdif}
-\tilde{C}_I(\Delta) = \sum _s^{N_s/2} \sum_{\phi=0}^{\phi=2\pi} I_{2s, 2s+1}^\phi\,\, I_{2s,2s+1}^{\phi + \Delta} 
+\widetilde{C}_I(\Delta) = \sum _s^{N_s/2} \sum_{\phi=0}^{\phi=2\pi} I_{2s, 2s+1}^\phi\,\, I_{2s,2s+1}^{\phi + \Delta} 
 \ee
 
 where
@@ -315,7 +309,7 @@ where
 I_{s,s'}^\phi \equiv I_s^\phi - I_{s'}^\phi 
 \ee
 
-It turns out that this so-called "difference correlation" is a good measure of (\ref{corr}) that automatically minimizes the artificial correlations in each exposure, the main assumption being that shot $s$ and shot $s+1$ will have roughly the same artificial correlations (see appendix i). With this powerful method, we see that our data agree with the predicted CXS signal for gold NNT particles (Figure \ref{fig:raw_dif}b). Without the use of CXS, it would not be possible to tell whether the gold NPs were twinned using x-ray diffraction alone. Note that this signal represents that of the average NP in solution, therefore we do not expect perfect agreement with our simple model. Further, electron microscopy suggests that gold NPs are most likely MTPs, which gives reason that the signal should deviate from that of simple NNT particles.
+It turns out that this so-called "difference correlation" is a good measure of (\ref{corr}) that automatically minimizes the artificial correlations in each exposure, the main assumption being that shot $s$ and shot $s+1$ will have roughly the same artificial correlations (see appendix i). With this powerful method, we see that our data agree with the predicted CXS signal for gold NNT particles (Figure \ref{fig:raw_dif}b). Without the use of CXS, it would not be possible to tell whether the gold NPs were twinned using x-ray diffraction alone. Note that this measured CXS signal represents that of the average gold NP in solution, therefore we do not expect perfect agreement with our simple NNT model. Further, electron microscopy suggests that gold NPs are most likely MTPs, which gives reason that the signal should deviate from that of simple NNT particles, as one would have to include next-nearest neighbor twins etc. in the modeling.
 
 \begin{figure}[h]
 \begin{center}
