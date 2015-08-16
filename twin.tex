@@ -157,16 +157,16 @@ F( \bm q_1, \bm q_2) =  (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 ) = \cos( \psi )
 then we can determine analytically which angles give rise to correlations by defining the sequence
 
 \be \label{psiset}
-\bm \Psi_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, (\bm q_1, \bm q_2 \ne \bm q_1) \in \bm Q_{111}\, ,\,  F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
+\bm \Psi_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, (\bm q_1, \bm q_2 \ne \bm q_1) \in \bm Q_{111}\, ,\,  \arccos [F( \bm q_1, \bm q_2)]  \, \le \,  2\theta_{111}   \}
 \ee 
 
-where we made use of (\ref{psimax}). Note, $F(\bm q, -\bm q) = -1$ corresponding to a correlation angle of $\pi$ is not included in the set as this angle is not measurable using conventional flat detectors. Rigorously,
+where we made use of (\ref{psimax}). Note, $F(\bm q, -\bm q) = -1$ corresponding to a correlation angle of $\pi$ is not included in the sequence as this angle is not measurable using conventional flat detectors. Rigorously,
 
 \be
 \bm \Psi_{111} = \{ -x_1, -x_2, ... -x_{12}, x_1, x_2, ... x_{12} \}
 \ee 
 
-where $x_i = 1/3\,\,\, (1 \le i \le 12 )$, provided that $ -1/3 \, \ge \, - \cos (2\theta_{111}) $ for the experiment (Figure \ref{fig:contrast} a,g). 
+where $x_i = 1/3\,\,\, (1 \le i \le 12 )$, provided that $ 2\theta_{111} \, \ge \, \arccos \left[(-1/3)\right ]    $ for the experiment (Figure \ref{fig:contrast} a,g). 
 
 Keep in mind that this analysis assumes that each gold NP is a single FCC domain. It is well known that smaller FCC NPs are not single crystal domains. Instead, they tend to form complicated twinning structures composed of many tetrahedral sub-units [ref]. The reciprocal space of these structures is more complex than that of a single domain NP, but this complexity is hidden in standard powder diffraction images; the twins all scatter into the same Bragg rings. CXS, however, is sensitive to twinned NPs. Consider the following simple model for two FCC tetrahedons joined by a twinning plane. Let each face of the tetrahedrons be a $\{111\}$ plane. When joined, the tetrahedrons will have 1 plane in common, referred to as the twinning plane. The twins atomic coordinates are related to one another by a reflection about this plane. We refer to this twinned structure as a nearest-neighbor twin (NNT). Larger structures, e.g. decahedrons and icosahedrons, can be assembled with NNTs (Figure \ref{fig:contrast}c). We call the twins "twin$_A$" and "twin$_B$".  In our model, twin$_A$ is oriented relative to twin$_B$ via a rotation of $\pi$ about its $(111)$ direction. This operation is given by the matrix
 
@@ -187,7 +187,7 @@ During an exposure, photons can scatter from each twin into separate Bragg vecto
 We can now predict where NNTs will give correlations using this new set of vectors: 
 
 \be \label{psisetab}
-\bm \Psi^{A,B}_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, (\bm q_1, \bm q_2 \ne \bm q_1) \in \bm Q^{A,B}_{111}\, ,\, F( \bm q_1, \bm q_2) \ge -\cos ( 2\theta_{111}  )  \}
+\bm \Psi^{A,B}_{111} = \{ F( \bm q_1, \bm q_2)\, \big | \, (\bm q_1, \bm q_2 \ne \bm q_1) \in \bm Q^{A,B}_{111}\, ,\,  \arccos [F( \bm q_1, \bm q_2)]  \, \le \,  2\theta_{111}     \}
 \ee
 
 For experiments with sufficiently large $2\theta_{111}$, (\ref{psisetab}) will contain only values $\pm (1/3), \pm (5/9), \pm(7/9)$ (Figure \ref{fig:contrast}h).  Rigorously, 
@@ -198,7 +198,7 @@ For experiments with sufficiently large $2\theta_{111}$, (\ref{psisetab}) will c
 && \,\,\,\, z_1, ... z_6, -z_1, ... -z_6 \, \}
 \eeq
 
-where $x_i = 1/3\,\,\, (1 \le i \le 36 )$, $y_i = 5/9\,\,\, (1 \le i \le 12 )$, $z_i = 7/9\,\,\, (1 \le i \le 6 )$.  We assume that $ -7/9 \, \ge \, - \cos (2\theta_{111}) $ during the experiment. We expect that the magnitude of the intensity correlations should agree with the frequency of values in this set. This is evident in our simulations (Figure \ref{fig:peak}).
+where $x_i = 1/3\,\,\, (1 \le i \le 36 )$, $y_i = 5/9\,\,\, (1 \le i \le 12 )$, $z_i = 7/9\,\,\, (1 \le i \le 6 )$.  We assume $  2\theta_{111} \, \ge \, \arccos \left[(-7/9)\right ]  $ during the experiment. We expect that the magnitude of the intensity correlations should agree with the frequency of values in this sequence. This is evident in our simulations (Figure \ref{fig:peak}).
 
 Note we reached these conclusions by considering the atomic structure of a single NP; the information content of CXS depends solely on the scattering factor of the individual particle in solution. For the case of NPs, the scattering factor is a relatively simple function in reciprocal space, however CXS analysis is easily extended to soft matter experiments [ref].
 
@@ -207,30 +207,35 @@ Depending on the growth process, gold NPs have been observed to grow into many c
 \section{The Experiment}
 Here we will report on the successful measurement of CXS for gold NPs at the SACLA beam facility in Japan. 60 nanometer gold NPs were purchased from Nanopartz Inc. [ref] and suspended in LCP (lipid cubic phase, [ref]) at a concentration of 40 mg/mL. The viscous solution was injected into the beam as a constant stream using a  hamilton 7780 syringe needle with inner diameter 130 $\mu m$.
 
-The SACLA beam was focused down to a roughly $1.5 \times 2.4 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. The femto-second pulses were measured using an MPCCD 8-panel detector [ref]. Gain calibrations were provided by SACLA [ref], and dark current measurements (detector readouts with the shutter closed) were performed every $5\times 10^3$ exposures and used to adjust for electronic noise common to CCD detectors. With this setup we acquired $1.6\times 10^5$ exposures of gold NPs. For the analysis we will be working with the $\{111\}$ Bragg ring.
+The SACLA beam was focused down to a roughly $1.5 \times 2.4 \mu m ^2$ spot size, and the beam repetition rate was 30 Hz. The femto-second pulses were measured using an MPCCD 8-panel detector [ref]. Gain calibrations were provided by SACLA [ref], and dark current measurements (detector readouts with the shutter closed) were performed every $5\times 10^3$ exposures and used to adjust for electronic noise common to CCD detectors. With this setup we acquired $1.6\times 10^5$ snapshot exposures of gold NPs. For the analysis we will be working with the $\{111\}$ Bragg ring.
 
-The goal of the analysis is to determine the angles $\psi$ which show angular intensity correlations at the $\{111\}$ Bragg ring, and compare the results with the values in (\ref{psiset}) and (\ref{psisetab}). In this way we hope to elucidate whether the NPs are bulk-FCC or twinned.
+The goal of the analysis is to determine the angles $\psi$ which show angular intensity correlations at the $\{111\}$ Bragg ring, and compare the results with the values in (\ref{psiset}) and (\ref{psisetab}). In this way we hope to elucidate whether the NPs are bulk-FCC or twinned.  
 
-The first step in analysis is to perform a polar interpolation of the cartesian pixels on the planar detector, thus creating the new set of polar pixels for each exposure
-
-\be
-\{\bm q\} \Rightarrow \{ (q,\phi) \}
-\ee
-
-We let $n_s(q,\phi) = M(n_s(\bm q))$ define the intensity recorded by a polar pixel at $\bm q$ in exposure $s$ where $M$ represents the interpolation map (e.g. nearest neighbor). 
-
-The second step is to calculate the angular correlations in terms of the azimuthal angle, 
+Conventional CXS analysis involves computation of angular correlations in the azimuthal component of the planar detector [ref]
 
 \be \label{cor111}
-C_{s,111}(\Delta) = \sum_{\phi}^{N_\phi}\,\, n_s(q_{111},\phi)\, n_s(q_{111}, \phi+\Delta)
+C_{s,111}(\Delta) = \sum_{i=0} ^{N_\phi-1} \, n_s(q_{111},\phi_i)\, n_s(q_{111}, \phi_i+\Delta)
 \ee
 
-and then use (\ref{project}) to express the results in terms of $\cos(\psi)$.
+Here, $n_s(q,\phi)$ defines the interpolated intensity recorded by a polar pixel at $\bm q$ in snapshot $s$, and $\phi_i = i\,\times (2\pi/N_\phi) $. The correlations are then summed
 
-It turns out that a straightforward computation of (\ref{core}) is a poor indication of any correlation signal (Fig \ref{fig:raw_dif}).  
+\be
+C_{111}(\Delta) = \sum_{s}^{N_s} C_{s,111}(\Delta)
+\ee
 
-so-called "difference correlation" is a good measure of (\ref{corr}) that automatically minimizes the artificial correlations in each exposure, the main assumption being that shot $s$ and shot $s+1$ will have roughly the same artificial correlations (see appendix i). With this method, we see that our data agree with the predicted CXS signal for gold NNT particles (Figure \ref{fig:raw_dif}b). Without the use of CXS, it would not be possible to tell whether the gold NPs were twinned using x-ray diffraction alone. Note that this measured CXS signal represents that of the average gold NP in solution, therefore we do not expect perfect agreement with our simple NNT model. Further, electron microscopy suggests that gold NPs are most likely MTPs, which gives reason that the signal should deviate from that of simple NNT particles, as one would have to include next-nearest neighbor twins etc. in the modeling.
+and the resulting signal 
 
+and one can use (\ref{project}) to express the results in terms of $\cos(\psi)$.
+
+\section{Results}
+
+As previously reported [ref], straightforward computation of (\ref{cor111}) is dominated by artificial correlations associated with the experiment. Examples of these correlations include pixel talk, detector shadows, and scattering anisotropies due to an inhomogeneous sample (Fig \ref{fig:raw_dif} a). 
+
+Now we report on the "difference correlation" technique that automatically minimizes these artificial correlations in each exposure. Rather then summing each shot, we instead chronologically sort the shots, subtract neighboring exposures, and correlate the differences. The main assumption is that consecutive exposures have roughly the same artificial asymmetries. Consider a shadow appearing on the detector for a series of exposures; each exposure in the series has the same shadow, therefore subtraction of the exposures should  suppress the shadow. In this way, the only thing difference between consecutive exposures should be the orientations of the NPs themselves. In reality, the number of photons in each FEL pule fluctuates wildly, so we must account for this difference as well (see supplemental information).  
+
+With the difference correlation method, we see that our data agree with the predicted CXS signal for gold NNT particles (Figure \ref{fig:raw_dif}b). Without the use of CXS, it would not be possible to tell whether the gold NPs were twinned using x-ray diffraction alone. Note that this measured CXS signal represents that of the average gold NP in solution, therefore we do not expect perfect agreement with our simple NNT model. Further, electron microscopy suggests that gold NPs are most likely MTPs, which gives reason that the signal should deviate from that of simple NNT particles, as one would have to include next-nearest neighbor twins etc. in the modeling.
+
+MTPs are commonly observed as decahedrons or icosahedrons. As it turns out, a decahedron cannot be comprised of purely FCC tetrahedrons and still be space-filling [ref]. It was proposed, however, that the FCC lattice of each subunit could instead be stretched in order that the decahedron be completely space filling, and that such a change might not be detectable with standard diffractometers [ref]. CXS however, would be sensitive to such small changes in the lattice, despite the overall measurement being done on a solution. Even though this result has long been observable with electron microscopy [ref], it serves as a good example of where CXS can be useful.
 
 %For the analysis we will be working with the $\{111\}$ Bragg ring. therefore we let $C_{1,2}(\Delta) \equiv C( \Delta )$, where it is implied that $n_{1,s}^\phi = n_{2,s}^\phi = n_s^\phi(q_{111}) \equiv n_s^\phi$. 
 
@@ -269,7 +274,7 @@ so-called "difference correlation" is a good measure of (\ref{corr}) that automa
 %It is a simple matter to show that correlations will only arise at $\cos (\psi) = $ for NPs which consist of two tetrahedral twinned subunits according to the simple model described above.
 %%%
 
-%We will now briefly present an argument supporting the precision of CXS. MTPs are commonly observed as decahedrons or icosahedrons. As it turns out, a decahedron cannot be comprised of FCC tetrahedrons and still be space-filling, the model simply won't work. We know from electron microscopy that the tetrahedral sub-units prefer to remain space-filling, and in order to form the MTP, dislocations arise [ref]. It was proposed, however, that the FCC lattice of each subunit could instead be stretched in order that the decahedron be completely space filling, and that such a change might not be detectable with standard diffractometers. CXS however, is sensitive to such small changes in the lattice, despite the overall mearurement being done on a solution.
+
 
 \begin{comment}
 For a solution of NPs, photons will scatter into all angles $\phi$, forming Bragg rings on the detector at scattering angles $q_{hkl}$, dependent on the lattice structure. For an exposure $s$, we let
