@@ -87,24 +87,28 @@
 \begin{center}
 \section*{Abstract}
 \end{center}
-Twinning was observed from isotropic solution exposures recorded at the SPring-8 Angstrom Compact Free Electron Laser facility (SACLA).  Each exposure was a snapshot of roughly 90,000 gold particles (each 60 nanometers across) suspended freely with random orientations. Twinning, which is readily observed using electron microscopy techniques, can go unnoticed in conventional X-ray scattering measurements which require long exposures that average away azimuthal variations (e.g. wide angle X-ray scattering / WAXS ). By using correlated X-ray scattering (CXS) analysis, we resolved a signal indicative of a basic twinning structure common to the nanoparticles. Our data also agree with a more complex decahedral twinning model. We hope this experiment sheds a new light on CXS as a technique for resolving local structural details from solution measurements.
+We report on measurement of angular intensity correlations resulting from snapshot exposures of gold nanoparticles recorded at the Spring-8 Angstrom Compact Free Electron Laser facility (SACLA). Each exposure was a snapshot of X gold nanoparticles (each Y nm in size) suspended freely with random orientations. From analysis of the intrinsic uncorrelated background we evaluated the number of exposures needed to assess the significance of the observed CXS signal. By looking at wide angles, we were able to compare the CXS signal to an atomic twinning model. We show that the data may be represented in terms of CXS from a decahedral twinning model.
+
+%Twinning was observed from isotropic solution exposures recorded at the SPring-8 Angstrom Compact Free Electron Laser facility (SACLA).  Each exposure was a snapshot of roughly 90,000 gold particles (each 60 nanometers across) suspended freely with random orientations. Twinning, which is readily observed using electron microscopy techniques, can go unnoticed in conventional X-ray scattering measurements which require long exposures that average away azimuthal variations (e.g. wide angle X-ray scattering / WAXS ). By using correlated X-ray scattering (CXS) analysis, we resolved a signal indicative of a basic twinning structure common to the nanoparticles. Our data also agree with a more complex decahedral twinning model. We hope this experiment sheds a new light on CXS as a technique for resolving local structural details from solution measurements.
 
 \section*{Acknowledgements}
 The XFEL experiments were performed at the BL3 of SACLA with the approval of the Japan Synchrotron Radiation Research Institute (JASRI) (Proposal No. 2013B8009 )
 
 \section{Introduction}
-Correlated X-ray scattering (CXS) is an emerging field which involves recording many snapshot exposures of an ensemble of randomly oriented mono-dispersed molecules or particles, and employing photon intensity correlation analysis to recover the average internal structure of the objects in the random ensemble \cite{Kam77}. CXS has potential to reveal the structural properties of proteins and soft matter without the use of crystallization \cite{SaldinBeyond, SaldinIsolated, SaldinTowards, PandeDeduce, GundDNA}. CXS lends itself naturally to the study of two-dimensional systems \cite{KurtaMembrane, SchroerFilms, Lehm2D, Kurta2D}. In these two-dimensional cases, the angle $\omega$ defining the orientation of the object is the same angle $\phi$ defining the detector azimuthal, hence the individual particle's intensity correlation function is independent of the particle's orientation, making the image reconstruction feasible. An obvious precursor to the study of soft matter CXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. Two-dimensional gold nano-structures have been solved using CXS, where each structure is anchored to a membrane perpendicular to the incoming X-rays, and each snapshot is comprised of multiple structures \cite{Pedrini2D, Saldin2D}. In three-dimensions, where $\omega \neq \phi$, CXS-based image-reconstruction becomes increasingly more complex. By recording many snap-shots of isolated three-dimensional objects, one can use CXS to reconstruct  the objects \cite{StarodubSingle, SaldinSingle}, however when more than one object is present in the beam, this problem becomes challenging \cite{ElserStrat}. The most recent studies involving reconstruction of simple three-dimensional structures all make use of symmetry tricks and are conducted at very small angles, with only one or a few objects in the beam during each exposure \cite{SaldinTricks, Liu3D, ChenDumbbell}. Rather than reconstruct an image from CXS data, one can use the correlated intensities to infer local structural characteristics \cite{Woch, AltarelliGen, Oxy}, resolve structural changes \cite{PandeTime}, and possibly even refine atomic models in an iterative procedure \cite{HaiguangZern}. Here we will discuss an experiment involving three-dimensional NP suspensions. NP suspensions are used in chemical catalysis, and their chemical properties are directly related to  the overall shape and atomic structure of the NPs themselves \cite{ShapeDepend2, ShapeDepend3}. As such, there is a need for structural characterization methods. Past work describing the thermodynamics and kinetics of NP growth and formation \cite{MarksWulff, KinTherm} has revealed that smaller NPs tend to form complicated twinning structures, e.g. icosahedral twins \cite{NPseeds,YangGeom, YangSymm}. Previously, twinning has been observed using electron microscopy and tomography \cite{MarksGoldSilv, 3Dimg}, where one images single NP projections. On the other hand, conventional powder X-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning. In what follows we will show how CXS can reveal twinning from many snapshot exposures of a solution of gold NPs. Further, we will show how the CXS signal scales with the number of correlated snapshots.
+Correlated X-ray scattering (CXS) is an emerging field which involves recording many snapshot exposures of an ensemble of randomly oriented mono-dispersed molecules or particles, and employing photon intensity correlation analysis to recover the average internal structure of the objects in the random ensemble \cite{Kam77}. CXS has potential to reveal the structural properties of proteins and soft matter without the use of crystallization \cite{SaldinBeyond, SaldinIsolated, SaldinTowards, PandeDeduce, GundDNA}. An obvious precursor to the study of soft matter CXS is that of nanoparticles (NPs), due to their typically large scattering cross sections. Here we will discuss an experiment involving three-dimensional NP suspensions. NP suspensions are used in chemical catalysis, and their chemical properties are directly related to  the overall shape and atomic structure of the NPs themselves \cite{YacaShapeDepend, ShapeDepend2, ShapeDepend3}. As such, there is a need for structural characterization methods. Past work describing the thermodynamics and kinetics of NP growth and formation \cite{InoStability, MarksWulff, HowieMarks, MarksSurf, KinTherm} has revealed that smaller NPs tend to form complicated twinning structures, e.g. decahedral and icosahedral twins \cite{HeinemannStruct, YacaStruct, NPseeds, YangGeom, YangSymm, DaiShapes}. Previously, twinning has been observed using electron microscopy and tomography \cite{MarksGoldSilv, YacaEM, 3Dimg}, where one images single NP projections. On the other hand, conventional powder X-ray diffraction measurements, used widely in industry to characterize ensembles of NPs, are isotropic averages and don't show signs of twinning. In what follows we will show how CXS can reveal twinning from many snapshot exposures of a solution of gold NPs. Further, we will show how the CXS signal scales with the number of correlated snapshots.
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[keepaspectratio, scale=0.9]{./fig1_new_version2.png}
 \end{center}
-\caption{Distinguishing twinned NPs from single domnain NPs using CXS. \textbf{A)} A free electron laser pulse (orange) exposes a collection of nanoparticles (black). Individual NPs scatter photons into specific angles (e.g. $\phi_1$, $\phi_2$, separated by $\Delta$). The total scatter from the NP collection results in a powder diffraction ring ($\{111\}$ Bragg ring highlighted in green), which by itself gives no indication of twinning. \textbf{B)} A bulk face-centered-cubic NP with a spherical boundary and the corresponding $\{111\}$ CXS signal. The expanding planes are outlined in pink, showing a regular tetrahedron. The plotted correlation signal has two pronounced peaks at $\pm (1/3)$, corresponding to the $70.5^{\circ}$ and $109.5^{\circ}$ angles between the planes of a regular tetrahedron. This would be the expected $\{111\}$ correlation from any bulk face-centered-cubic (FCC) crystal. \textbf{C)} An icosahedral twinned FCC nanoparticle and the corresponding $\{111\}$ CXS signal due to a nearest-neighbor twinned unit (highlighted in blue and pink). The icosahedron is formed by 10 nearest-neighbor twinned units - each unit consisting of two regular FCC tetrahedrons related by a reflection about the common plane (referred to as the twin boundary). The CXS signal shows pronounced peaks at $\pm (1/3), \pm (5/9), \pm (7/9)$, which correspond to the angles between all pairs of $\{111\}$ planes in a nearest-neighbor twin unit. The increased complexity of the CXS signal is illustrated by the cluster of blue and pink Bragg vectors. Artwork courtesy of Gregory M.~Stewart (SLAC).}
+\caption{Distinguishing twinned NPs from single domain NPs using CXS. \textbf{A)} A free electron laser pulse (orange) exposes a collection of nanoparticles (black). Individual NPs scatter photons into specific angles (e.g. $\phi_1$, $\phi_2$, separated by $\Delta$). The total scatter from the NP collection results in a powder diffraction ring ($\{111\}$ Bragg ring highlighted in green), which by itself gives no indication of twinning. \textbf{B)} A bulk face-centered-cubic NP with a spherical boundary and the corresponding $\{111\}$ CXS signal. The expanding planes are outlined in pink, showing a regular tetrahedron. The plotted correlation signal has two pronounced peaks at $\pm (1/3)$, corresponding to the $70.5^{\circ}$ and $109.5^{\circ}$ angles between the planes of a regular tetrahedron. This would be the expected $\{111\}$ correlation from any bulk face-centered-cubic (FCC) crystal. \textbf{C)} An icosahedral twinned FCC nanoparticle and the corresponding $\{111\}$ CXS signal due to a nearest-neighbor twinned unit (highlighted in blue and pink). The icosahedron is formed by 10 nearest-neighbor twinned units - each unit consisting of two regular FCC tetrahedrons related by a reflection about the common plane (referred to as the twin boundary). The CXS signal shows pronounced peaks at $\pm (1/3), \pm (5/9), \pm (7/9)$, which correspond to the angles between all pairs of $\{111\}$ planes in a nearest-neighbor twin unit. The increased complexity of the CXS signal is illustrated by the cluster of blue and pink Bragg vectors. Artwork courtesy of Gregory M.~Stewart (SLAC).}
 \label{fig:contrast}
 \end{figure}
 
 \section{Background}
-An object in solution exposed to sufficient X-ray flux can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object can be random, the angle defined by $\bm q_1$ and $\bm q_2$ 
+CXS has been extensively explored as a tool to investigate two-dimensional systems \cite{KurtaMembrane, SchroerFilms, Lehm2D, Kurta2D, Pedrini2D, Saldin2D}, however in three-dimensioal systems, the information content accessible by CXS techniques decreases \cite{ElserStrat}. If one or few three-dimensional objects are exposed during each snapshot, then one can use symmetry arguments to recover structural information content \cite{KamMicroG, SaldinTricks, Liu3D, ChenDumbbell, StarodubSingle, SaldinSingle}. When the number of exposed three-dimensional objects increases, one can still use the correlated intensities to infer local structural characteristics \cite{Woch, AltarelliGen, Oxy, MalmerbergOp}, resolve structural changes \cite{PandeTime}, and possibly even refine atomic models in an iterative procedure \cite{HaiguangZern}. In this paper report on CXS as a tool to investigate a three-dimensional ensemble of gold NPs, where each snapshot is composed of many NPs. First we qualitatively describe the physics of CXS for NP ensembles.
+
+An object in solution exposed to sufficient X-ray flux over a short time interval can scatter photons into at least two directions, $\bm q_1$ and $\bm q_2$. While the orientation of this object can be random, the angle defined by $\bm q_1$ and $\bm q_2$ 
 
 \be \label{cpsi}
 \cos (\psi) = (\bm q_1 \cdot \bm q_2)/(q_1 \, q_2 )
@@ -128,7 +132,7 @@ The angle $\psi_{hkl,h'k'l'}$ is also the interplanar angle between crystallogra
 \cos(\psi) = \cos( \Delta )\cos( \theta_1)\cos(\theta_2) + \sin(\theta_1)\sin(\theta_2)
 \ee
 
-(Figure \ref{fig:contrast} B,C) where $\theta$ is half the Bragg angle for elastically photons at wavelength $\lambda$, defined by
+(Figure \ref{fig:contrast} B,C) where $\theta$ is half the Bragg angle for elastically scattered photons at wavelength $\lambda$, defined by
 
 \be
 \theta  = \arcsin \big( \,\frac{ \lambda\,q  }{ 4\pi }\, \big )
@@ -140,9 +144,9 @@ The angle $\psi_{hkl,h'k'l'}$ is also the interplanar angle between crystallogra
 \cos(\psi_{max}) = - \cos( \theta_1)\cos(\theta_2) + \sin(\theta_1)\sin(\theta_2)
 \ee
 
-which sets a bound on the correlation angles (\ref{cpsi}) that can measured in a given experiment. 
+which sets a bound on the correlation angles (\ref{cpsi}) that can measured in a given experiment. Note, at small scattering angles, $\psi \rightarrow \Delta$. The large majority of CXS experimental work to date has been conducted in this small angle limit.
 
-In a typical exposure, most NPs will not scatter into the detector, hence a small fraction will be oriented such that they scatter into multiple detectable directions \cite{Observ} . Therefore, the average exposure comprises a large fraction of randomly scattered and uncorrelated photons (owing to the orientation randomness in a solution). As such, the correlation signal-to-noise is much less than unity for a single exposure, which has been shown to scale as the square root of the number of averaged exposures, $N_s$ \cite{Kirian}. We consider an exposure to be a snapshot, meaning the NPs should not be moving significantly throughout the exposure duration. This is guaranteed by the femto-second timescale pulses of the SACLA facility \cite{ImagingPotential}. CXS can also be conducted at synchrotron radiation facilities, provided that the sample is prepared in an anti-freeze suspension, and that it is cooled during exposure to prevent motion of the particles \cite{KamSynch,Observ}. 
+In a typical exposure, most NPs will not scatter into the detector, hence a small fraction will be oriented such that they scatter into multiple detectable directions \cite{Observ} . Therefore, the average exposure comprises a large fraction of randomly scattered and uncorrelated photons (owing to the orientation randomness in a solution). As such, the correlation signal-to-noise is much less than unity for a single exposure, which has been shown to scale as the square root of the number of averaged exposures, $N_s$ \cite{Kirian}. We consider an exposure to be a snapshot, meaning the NPs should not be moving significantly throughout the exposure duration. This is guarantteed by the femto-second timescale pulses of the SACLA facility \cite{ImagingPotential}. CXS can also be conducted at synchrotron radiation facilities, provided that the sample is prepared in an anti-freeze suspension, and that it is cooled during exposure to prevent motion of the particles \cite{KamSynch,Observ}. 
 
 \section{Theory}
 Each gold NP has a well-defined face-centered-cubic (FCC) lattice structure. This paper only discusses correlations arising from the $\{111\}$ family of planes. There are 4 distinct $\{111\}$ planes: $111$,$11\bar 1$,$\bar 1 1\bar 1$,$1\bar 1 \bar 1$, and the mirror-symmetric planes, $\bar 1\bar 1\bar 1$,$\bar 1\bar 1 1$,$1 \bar 11$,$\bar 1 1 1$.  Photons scattered from these crystallographic planes from an ensemble of randomly oriented NPs will form a Bragg ring at  $q_{111} = 2\pi / d_{111} $ where $d_{111}$ is the inter-planar spacing. Let 
@@ -313,6 +317,11 @@ Kam Z
 \textit{Determination of macromolecular structure in solution by spatial correlation of scattering fluctuations.}
 Macromolecules 10:927-934, 1977.
 
+\bibitem{YacaShapeDepend}
+Yacam\'{a}n MJ, Fuentes S, and Dominguez JM
+\textit{The Effect of Shape and Crystal Structure of Small Particles on Their Catalytic Activity.}
+Surf Sci, 106, 472-477 (1981)
+
 \bibitem{ShapeDepend2}
 Narayanan R and El-Sayed MA
 \textit{Catalysis with Transition Metal Nanoparticles in Colloidal Solution: Nanoparticle Shape Dependence and Stability.}
@@ -323,15 +332,35 @@ Narayanan R and El-Sayed MA
 \textit{ Shape-Dependent Catalytic Activity of Platinum Nanoparticles in Colloidal Solution.}
 Nano Lett., Vol. 4, No. 7, 2004
 
+\bibitem{InoStability}
+Ino S
+\textit{Stability of Multiply-Twinned Particles.}
+J Phys Soc Jpn, 941-953 (1969)
+
 \bibitem{MarksWulff}
 Marks LD 
 \textit{Modified Wulff Constructions for Twinned Particles.} 
 J. Cryst. Growth, 61, 556-566, 1983
 
+\bibitem{MarksSurf}
+Marks LD
+\textit{Surface structure and energetics of multiply twinned particles}
+Philos Mag A, 49, 81-93 (1984) 
+
 \bibitem{KinTherm} 
 Ringe E, Van Duyne RP, and Marks LD 
 \textit{Kinetic and Thermodynamic Modified Wulff Constructions for Twinned Nanoparticles.}
 J. Phys. Chem. C,  117, 15859€š-15870, 2013
+
+\bibitem{HeinemannStruct}
+Heinemann K, Yacam\'{a}n MJ, Yang CY, and Poppa H
+\textit{The Structure of Small, Vapor-Deposited Particles: I. Experimental Study of Single Crystals with Pentagonal Profiles.}
+J of Cryst Growth, 47, 177-186 (1979)
+
+\bibitem{YacaStruct}
+Yacam\'{a}n MJ, Heinemann K, Yang CY, and Poppa H
+\textit{The Structure of Small, Vapor-Deposited Particles: II. Experimental Study of Particles with Hexagonal Profile.}
+J of Cryst Growth, 47, 187-195 (1979)
 
 \bibitem{NPseeds} 
 Langille MR et al
@@ -344,7 +373,7 @@ Yang CY
 Journal of Crystal Growth 47 274-282, 1979
 
 \bibitem{YangSymm}
-Yang CY, Yacaman MJ,  and Heinemann K 
+Yang CY, Yacam\'{a}n MJ,  and Heinemann K 
 \textit{Crystallography of decahedral and icosahedral particles: II. High symmetry orientations.}
 Journal of Crystal Growth 47 283-290, 1979
 
@@ -353,10 +382,20 @@ Marks LD and Smith DJ
 \textit{High-Resolution Studies of Small Particles of Gold and Silver 0.1. Multiply-Twinned Particles.}
 J. Cryst. Growth 54, 425-432, 1981
 
+\bibitem{YacaEM}
+Yacam\'{a}n MJ and Borja MA
+\textit{Electron Microscopy of Metallic Nano Particles Using High- and Medium-Resolution Techniques.}
+Catal Rev Sci Eng, 34, 55-127 (1992) 
+
 \bibitem{3Dimg} 
 Chen CC et al
 \textit{Three-dimensional imaging of dislocations in a nanoparticle at atomic resolution.}
 Nature 496, 74-77, 2013
+
+\bibitem{DaiShapes}
+Dai ZR, Sun S, and Wang ZL
+\textit{Shapes, multiple twins and surface structures of mono disperse FePt magnetic nanocrystals.}
+Surf Sci, 505, 325-335 (2002)
 
 %\bibitem{Friedel}
 %Friedel G
@@ -503,6 +542,21 @@ Phys Rev B, 82, 104207 (2010)
 Kurta RP, Altarelli M, Weckert E, and Vartanyants IA
 \textit{X-ray cross-correlation analysis applied to disordered two-dimensional systems.}
 Phys Rev B, 85, 184204 (2012)
+
+\bibitem{MalmerbergOp}
+Malmerberg R, Kerfield CA, and Zwart PH
+\textit{Operational properties of fluctuation X-rat scattering data}
+IUCrJ, 2, 309-316 (2015)
+
+\bibitem{KamMicroG}
+Kam Z
+\textit{The reconstruction of structure from electron micrographs of randomly oriented particles.}
+J Theor Biol 82, 15-39 (1980)
+
+\bibitem{HowieMarks}
+Howie A and Marks LD
+\textit{Elastic strains and the energy balance for multiply twinned particles.}
+Philos Mag A, 49, 95-109 (1984)
 
 \end{thebibliography}
 \end{document}
