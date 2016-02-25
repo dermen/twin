@@ -64,7 +64,6 @@ for i_pk in xrange( N_pk):
 
 C_data = norm_corr( sum_gauss)
 
-
 # load the correlation datas
 cpsi, cors_m = np.load( 'all_cors_m2.npy')
 _, cors, difcors = np.load('cor_vs_difcor.npy')
