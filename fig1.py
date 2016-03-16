@@ -39,7 +39,7 @@ ax1 = axes([0,0.6,1,0.4  ])
 
 ax1.axis('off')
 ax1.imshow( layer, aspect='auto')
-ax1.text(212, 116, 'A', color='r', fontsize=font_size)
+ax1.text(212, 116, 'a', color='r', fontsize=font_size)
 
 
 ### MAKE axis 2 (insert axis)
@@ -164,7 +164,7 @@ ax1.text(772,438,s=r"$2\theta$", fontsize=font_size,
 #ax1.add_artist( Circle(phi2,10,color='white')  )
 ax1.add_artist( Circle(det_center,8,color='white')  )
 
-ax2.text(1.1, -.8, 'B', color='r', fontsize=font_size)
+ax2.text(1.1, -.8, 'b', color='r', fontsize=font_size)
 
 im3 = PIL.Image.open( 'pymol_cubo_highest.png')
 
@@ -247,8 +247,11 @@ ax4.set_xlim(.3333-0.22,1)
 fig.text(.49, .02, s=r'$\cos\, \psi$',fontsize=font_size, weight='bold' )
 
 ax3.set_ylabel(r'$C(\cos\,\psi)$', fontsize=font_size,labelpad=0 )
-ax3.text( 0.2, 1.1 ,'A',  color='r', fontsize=font_size)
-ax4.text( 0.2, 1.1 ,'B',  color='r', fontsize=font_size)
+ax3.text( 0.2, 1.1 ,'a',  color='r', fontsize=font_size)
+ax4.text( 0.2, 1.1 ,'b',  color='r', fontsize=font_size)
+
+ax3.set_axis_bgcolor('w')
+ax4.set_axis_bgcolor('w')
 
 ax4.annotate('', xy=(-0.05, 0), xycoords='axes fraction', 
             xytext=(-0.05, 1), 
@@ -261,7 +264,7 @@ ax2.annotate('', xy=(-0.09, -1), xycoords='axes fraction',
                 color='dimgrey'))
 
 
-savefig('Fig1Fig2.png', dpi=500, facecolor='w')
+savefig('Fig1Fig2.png', dpi=1200, facecolor='w')
 #ax4.set_ylabel(r'$C(\cos(\psi))$', fontsize=font_size ,labelpad=0)
 # FORGO the sample circle for now
 #draw sample circle

@@ -146,20 +146,23 @@ for i_nshot in xrange( 0, len(shot_series)):
 
 #===========================
 import h5py
-fo = h5py.File('fit_data4.h5py', 'w')
+#fo = h5py.File('fit_data4.h5py', 'w')
 
-for param, param_dict in fit_data4.iteritems():
-    for param_number, param_val in param_dict.iteritems():
-        h5_key = param +'/'+ param+ str(param_number)
-        fo.create_dataset(h5_key, data = param_val )
-
-fo.close()
+#for param, param_dict in fit_data4.iteritems():
+#    for param_number, param_val in param_dict.iteritems():
+#        h5_key = param +'/'+ param+ str(param_number)
+#        fo.create_dataset(h5_key, data = param_val )
+#
+#fo.close()
 
 #==========================================================
 #
 # FIND THE CONVERGED SIGNAL AMPLITUDES
 #
 #=========================================================
+
+shot_series = array([   25,  3150,  
+        6275,  9400, 12525, 15650, 18775])
 
 f2 = h5py.File('fit_data2.h5py', 'r')
 f3 = h5py.File('fit_data3.h5py', 'r')
@@ -239,6 +242,9 @@ wid_59 = [ w_[8] for w_ in W_mean_after_nshots]
 
 
 CRV = optimize.curve_fit
+
+def fitfunc(x,p1,p2):
+    return p1*np.power(x,p2)
 #fit amplitudes (first point is really noisy)
 amp_79_fit = CRV(fitfunc,
             ydata=amp_79[3:],
@@ -278,12 +284,12 @@ noise_fit = CRV(fitfunc,
 
 noise_eval = fitfunc( 2*shot_series, *noise_fit[0])
 
-#noise_fitfull = CRV(fitfunc,
-#            ydata=ic.std(1), 
-#            xdata=2*shot_series_ic, 
-#            p0=(0.5,-0.4) )
-#
-#noise_evalfull = fitfunc( 2*shot_series_ic, *noise_fitfull[0])
+noise_fitfull = CRV(fitfunc,
+            ydata=ic.std(1), 
+            xdata=2*shot_series_ic, 
+            p0=(0.5,-0.4) )
+noise_evalfull = fitfunc( 2*shot_series_ic, 
+            *noise_fitfull[0])
 
 
 snr_79_fit = CRV(fitfunc,
@@ -341,10 +347,28 @@ yellow = color_cycle.next()
 green = color_cycle.next()
 pink = color_cycle.next()
 
-red = red
-orange = 'Darkorange'
-blue = 'c'
-green = '#89E894'
+
+
+tableau20 = [(31, 119, 180), (174, 199, 232), 
+            (255, 127, 14), (255, 187, 120),    
+             (44, 160, 44), (152, 223, 138),
+             (214, 39, 40), (255, 152, 150),    
+             (148, 103, 189), (197, 176, 213),
+             (140, 86, 75), (196, 156, 148),    
+             (227, 119, 194), (247, 182, 210),
+             (127, 127, 127), (199, 199, 199),    
+             (188, 189, 34), (219, 219, 141),
+             (23, 190, 207), (158, 218, 229)]    
+  
+# Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.    
+for i in range(len(tableau20)):    
+    r, g, b = tableau20[i]    
+    tableau20[i] = (r / 255., g / 255., b / 255.)    
+
+red = tableau20[1]
+orange =tableau20[3] 
+blue =tableau20[5]
+green = tableau20[7]
 
 ms = 10
 mew = 1
@@ -369,12 +393,12 @@ errorbar(x=2*shot_series,
 errorbar(x=2*shot_series, 
         y=snr_59_eval,
         yerr=err_59, marker='^', 
-        color=blue , mew=mew, ms=ms,mec=mec,
+        color=orange , mew=mew, ms=ms,mec=mec,
         lw=lw,elinewidth=elw,ecolor=ec,label=lab59)
 errorbar(x=2*shot_series, 
         y=snr_79_eval,
         yerr=err_79, marker='o', 
-        color=orange , mew=mew, ms=ms,mec=mec,
+        color=blue , mew=mew, ms=ms,mec=mec,
         lw=lw,elinewidth=elw,ecolor=ec, label=lab79)
 errorbar(x=2*shot_series, 
         y=snr_4_eval,
@@ -404,7 +428,7 @@ tick_params(axis='both', which='minor',length=0,width=0,labelsize=fs)
 grid(b=1, which='both', color=black, linestyle='--', alpha=0.3, lw=1)
 
 xlabel(r'$N$',fontsize=fs)
-ylabel(r'$Z(\cos\, \psi)\,\, \propto\,\, N^{k}$', fontsize=fs)
+ylabel(r'$Z\,\, \propto\,\, N^{k}$', fontsize=fs)
 ylim(0.5, 20)
 xlim(6000,40000)
 ax.xaxis.tick_bottom()
@@ -431,27 +455,137 @@ shots[ argmin( np.abs( fitfunc( shots, *snr_4_fit[0]) - 2.5 ) ) ]
 shots[ argmin( np.abs( fitfunc( shots, *snr_13_fit[0]) - 2.5 ) ) ]
 shots[ argmin( np.abs( fitfunc( shots, *snr_59_fit[0]) - 2.5 ) ) ]
 shots[ argmin( np.abs( fitfunc( shots, *snr_79_fit[0]) - 2.5 ) ) ]
-"""
 
 #================================
 # PLOT CONVERGENCES OF AMPLITUDES
 #================================
 pk_lab = ['7/9', '5/9', '0.4', '1/3']
-for i_, ipk in enumerate( [0,8,12,13 ] ):
 
-    for i_shot in xrange( 1,7):
-        plot( A_means[i_shot][ipk],lw=2 )
+#for i_, ipk in enumerate( [0,8,12,13 ] ):
 
-    labs =[ r'$N=%d$'%(int(s))  for s in  2*shot_series]
-    leg = legend(labs, loc=4)
-    fr = leg.get_frame()
-    fr.set_alpha(0.5)
 
-    suptitle('Convergence of CXS signal $(S)$ for\npeak at $\cos \,\psi = %s$'%pk_lab[i_],fontsize=12)
-    ylabel(r'$S(N; N_{G})$',fontsize=fs)
-    xlabel(r'$N_G$',fontsize=fs)
-    savefig('/Users/mender/Desktop/SNR_%d.png'%i_,dpi=150 )
-    clf()
+
+#NGs = [ 200]
+NGs = [ 25,50,100, 200]
+colors = itertools.cycle( \
+            rcParams['axes.color_cycle'] )
+
+color_ng = {25:red, 50:blue,
+            100:yellow, 200:yellow}
+
+marker_ng = {25:'s', 50:'d', 100:'o', 200:'D'}
+
+lw_ng = {25:8, 50:6, 100:4, 200:2 }
+
+o = 750
+off = {25:o*0, 50:o*1, 100:o*2, 200:o*3}
+#off = {200:0}
+
+fig, ax = subplots(nrows=1, ncols=2, num=6 ,
+    figsize=(6,4))
+ax1 = ax[0]
+ax2 = ax[1]
+
+for i_shot in xrange(2,7):
+    mean_N = A_means[i_shot][13]
+    for i, ng in enumerate( NGs ):
+        amps = []
+        stds = []
+        for i in xrange(3):
+            inds = np.random.randint(0, 200, ng  )
+            amps.append(mean_N[ inds ].mean() )
+            stds.append( mean_N[inds].std() )
+
+        y = mean(amps)
+        yerr = mean(stds)
+        ax1.errorbar( 2*shot_series[i_shot]+off[ng], 
+                y, yerr=yerr, 
+                marker=marker_ng[ng], color=color_ng[ng] ,
+                ms=12, alpha=0.9, ecolor='#777777',
+                elinewidth=2,mec='#777777' )
+
+
+ax1.set_ylim(1.5,1.7)
+
+ax1.xaxis.tick_bottom()
+ax1.yaxis.tick_left()
+#ax1.set_ylim(0.6, .7)
+
+
+ticks = [10000, 20000, 30000, 40000 ]
+ticklabels = map( lambda x: r'$%dk$'%(x/1000), ticks)
+ax1.set_xticks(ticks)
+ax1.set_xticklabels(ticklabels)
+ax1.set_axis_bgcolor('w')
+ax1.tick_params(length=6, labelsize=fs)
+ax1.grid(1, lw=1, ls='--', alpha=0.5, color='#777777')
+ax1.set_xlim(8000,43000)
+
+#i_ = 0
+#ipk = 0
+#for i_shot in xrange( 2,7):
+#    ax1.plot( A_means[i_shot][ipk],lw=2 )
+
+#labs =[ r'$N=%d$'%(int(s))  for s in  2*shot_series[2:]]
+#leg = ax1.legend(labs, loc=4)
+#fr = leg.get_frame()
+#fr.set_alpha(0.5)
+#fr.set_facecolor('w')
+
+#ax1.set_yticks([])
+
+#yticklabels = map( lambda x: r'$%.2f$'%x, ax1.get_yticks() )
+#ax1.set_yticklabels(yticklabels)
+
+
+
+
+#suptitle('Convergence of CXS signal $(S)$ for\npeak at $\cos \,\psi = %s$'%pk_lab[i_],fontsize=12)
+
+#ax1.set_ylabel(r'$\langle A_\gamma\rangle_{N_G}$',
+#            fontsize=fs)
+#ax1.set_xlabel(r'$N_G$',fontsize=fs)
+
+
+
+ax2.yaxis.tick_right()
+ax2.xaxis.tick_bottom()
+ax2.plot( 2*shot_series, noise.std(1), 's',
+            color=purple, ms=10 )
+ax2.plot( 2*shot_series_ic,  noise_evalfull,
+        color=green,lw=2)
+#ax2.set_ylim(0,2.8)
+
+
+#ax1.plot( 2*shot_series, noise.std(1), 's',
+#            color=purple, ms=10 )
+#ax1.plot( 2*shot_series_ic,  noise_evalfull,
+#        color=black,lw=3)
+
+ticklabels = map( lambda x: r'$%dk$'%(x/1000), 
+            ax2.get_xticks() )
+ax1.set_xticklabels(ticklabels)
+
+#ax2.set_ylim(.11,.2)
+##yticklabels = map( lambda x: r'$%.3f$'%x, ax2.get_yticks() )
+#ax2.set_yticklabels(yticklabels)
+ax2.set_xlabel(r'$N$', fontsize=fs)
+ax2.tick_params(length=6, labelsize=fs)
+ax2.set_ylabel(r'$\sigma$', fontsize=fs)
+
+ax2.set_axis_bgcolor('w')
+ax2.grid(1, ls='--',alpha=.5, lw=1,color='#777777')
+
+ax2.set_ylim(0,.5)
+
+
+ax2.set_xlim(10000,40000)
+
+
+
+#savefig('/Users/mender/Desktop/SNR_%d.png'%i_,dpi=150 )
+
+"""
 
 #plot( shot_series , snr_4_eval, 's' )
 #f = h5py.File( 'stats_test2.hdf5', 'w')
